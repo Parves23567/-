@@ -432,6 +432,113 @@ header {
 .btn-edit:hover { border-color:var(--rose); color:var(--rose); }
 .btn-edit.done { background:linear-gradient(135deg,var(--rose),var(--deep)); border-color:transparent; color:#fff; }
 
+/* ── ADMIN LB GENERATE CARD ── */
+.lb-generate-card {
+  background: linear-gradient(135deg, #1a0a0d, #4a1520);
+  border-radius: 24px; padding: 28px 24px; margin-bottom: 20px;
+  color: #fff; position: relative; overflow: hidden;
+}
+.lb-generate-card::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 0%,rgba(196,154,60,0.2),transparent 70%); }
+.lb-generate-card h3 { font-family:'Noto Serif Bengali',serif; font-size:1.1rem; margin-bottom:6px; position:relative; }
+.lb-generate-card p { font-size:0.82rem; color:rgba(255,255,255,0.6); margin-bottom:0; position:relative; }
+.lb-generate-card .btn-main { position:relative; margin-top:16px; background:linear-gradient(135deg,var(--gold),#a07020); }
+
+/* ── ADMIN LEADERBOARD PRINTABLE ── */
+#adminLbSection { max-width: 720px; margin: 0 auto; padding: 0 16px 60px; }
+.alb-print-bar {
+  display: flex; gap: 10px; margin-bottom: 20px;
+  justify-content: flex-end; flex-wrap: wrap;
+}
+#adminLbContent {
+  background: #fff; border-radius: 20px; overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+}
+.alb-header {
+  background: linear-gradient(135deg, #4a1520, #7b2d35);
+  padding: 36px 28px; text-align: center; position: relative; overflow: hidden;
+}
+.alb-header::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 0%,rgba(196,154,60,0.25),transparent 65%); }
+.alb-brand { font-size:0.75rem; letter-spacing:4px; color:var(--gold2); margin-bottom:8px; position:relative; }
+.alb-title { font-family:'Noto Serif Bengali',serif; font-size:1.8rem; font-weight:900; color:#fff; margin-bottom:6px; position:relative; }
+.alb-subtitle { font-size:0.9rem; color:rgba(255,255,255,0.7); position:relative; }
+.alb-date { font-size:0.75rem; color:rgba(255,255,255,0.5); margin-top:8px; position:relative; }
+
+.alb-stats-row {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: #f0e8e0; border-bottom: 1px solid #f0e8e0;
+}
+.alb-stat { background:#fff; padding:18px 12px; text-align:center; }
+.alb-stat-num { font-family:'Noto Serif Bengali',serif; font-size:1.8rem; font-weight:900; color:var(--deep); }
+.alb-stat-lbl { font-size:0.72rem; color:var(--muted); margin-top:3px; }
+
+.alb-section { padding: 24px 24px 8px; }
+.alb-section-title {
+  font-family:'Noto Serif Bengali',serif; font-size:1rem; color:var(--deep);
+  margin-bottom:16px; padding-bottom:8px; border-bottom:2px solid var(--blush);
+  display:flex; align-items:center; gap:8px;
+}
+
+/* rank table */
+.alb-rank-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; border-radius: 14px; margin-bottom: 8px;
+  border: 1.5px solid #f0e0d8; background: #fdf6ee;
+}
+.alb-rank-row.r1 { background:linear-gradient(135deg,#fffbe8,#fff8dc); border-color:var(--gold); }
+.alb-rank-row.r2 { background:linear-gradient(135deg,#f5f5f5,#ececec); border-color:#bbb; }
+.alb-rank-row.r3 { background:linear-gradient(135deg,#fff0e8,#ffe8d8); border-color:#c87c50; }
+.alb-rank-num {
+  width:38px; height:38px; border-radius:50%; display:flex; align-items:center;
+  justify-content:center; font-weight:900; font-size:0.9rem; flex-shrink:0;
+  background:var(--blush); color:var(--deep);
+}
+.alb-rank-row.r1 .alb-rank-num { background:linear-gradient(135deg,#c49a3c,#e8c56d); color:#fff; }
+.alb-rank-row.r2 .alb-rank-num { background:linear-gradient(135deg,#888,#bbb); color:#fff; }
+.alb-rank-row.r3 .alb-rank-num { background:linear-gradient(135deg,#a0522d,#cd853f); color:#fff; }
+.alb-rank-info { flex:1; }
+.alb-rank-name { font-family:'Noto Serif Bengali',serif; font-weight:700; color:var(--deep); font-size:0.95rem; }
+.alb-rank-role { font-size:0.72rem; color:var(--muted); background:var(--blush); padding:2px 8px; border-radius:99px; display:inline-block; margin-top:2px; }
+.alb-rank-score { font-family:'Noto Serif Bengali',serif; font-size:1.5rem; font-weight:900; color:var(--deep); flex-shrink:0; }
+.alb-rank-score span { font-size:0.7rem; color:var(--muted); font-weight:400; }
+.alb-rank-bar-wrap { width:80px; flex-shrink:0; }
+.alb-rank-bar-bg { height:6px; border-radius:99px; background:#e8c4b8; overflow:hidden; }
+.alb-rank-bar { height:100%; border-radius:99px; background:linear-gradient(90deg,var(--rose),var(--gold)); }
+.alb-medal { font-size:1.4rem; flex-shrink:0; width:26px; text-align:center; }
+
+/* breakdown per person */
+.alb-person-card {
+  border: 1px solid #f0e0d8; border-radius: 14px; margin-bottom: 16px; overflow: hidden;
+}
+.alb-person-head {
+  background: linear-gradient(135deg, var(--deep), #4a1520);
+  padding: 12px 16px; display: flex; justify-content: space-between; align-items: center;
+}
+.alb-person-name { font-family:'Noto Serif Bengali',serif; color:#fff; font-weight:700; font-size:0.95rem; }
+.alb-person-role { font-size:0.72rem; color:var(--gold2); }
+.alb-person-score { font-family:'Noto Serif Bengali',serif; font-size:1.3rem; font-weight:900; color:#fff; }
+.alb-person-verdict { font-size:0.72rem; color:var(--gold2); text-align:right; }
+.alb-q-rows { padding: 10px 14px; }
+.alb-q-row { display:flex; align-items:center; gap:8px; padding:5px 0; border-bottom:1px dashed #f0e0d8; }
+.alb-q-row:last-child { border:none; }
+.alb-q-topic { font-size:0.78rem; color:var(--muted); flex:1; }
+.alb-q-bar-bg { width:80px; height:5px; border-radius:99px; background:#f0e0d8; overflow:hidden; flex-shrink:0; }
+.alb-q-bar { height:100%; border-radius:99px; background:linear-gradient(90deg,var(--rose),var(--gold)); }
+.alb-q-score { font-size:0.8rem; font-weight:700; color:var(--rose); min-width:30px; text-align:right; }
+
+.alb-footer {
+  background: #fdf6ee; border-top: 1px solid #f0e0d8;
+  padding: 20px 24px; text-align: center;
+  font-size: 0.75rem; color: var(--muted); line-height: 1.8;
+}
+
+/* ── PRINT STYLES ── */
+@media print {
+  body * { visibility: hidden !important; }
+  #adminLbContent, #adminLbContent * { visibility: visible !important; }
+  #adminLbContent { position: fixed; inset: 0; border-radius: 0; box-shadow: none; }
+  .alb-print-bar { display: none !important; }
+}
+
 /* delete buttons */
 .del-btn {
   background:rgba(248,113,113,0.15); border:1.5px solid #f87171;
@@ -658,6 +765,16 @@ header {
     </div>
     <div id="subsList"></div>
   </div>
+
+  <!-- Admin Leaderboard PDF -->
+  <div class="lb-generate-card">
+    <div style="text-align:center;margin-bottom:16px">
+      <div style="font-size:2rem;margin-bottom:8px">🏆</div>
+      <h3>লিডারবোর্ড তৈরি করুন</h3>
+      <p>সকলের ফলাফল র‍্যাংকিং আকারে প্রিন্ট বা PDF করুন</p>
+    </div>
+    <button class="btn-main" onclick="openAdminLeaderboard()">📄 লিডারবোর্ড দেখুন ও প্রিন্ট করুন</button>
+  </div>
 </div>
 
 <!-- ══ LEADERBOARD (user view) ══ -->
@@ -672,6 +789,45 @@ header {
     <div id="lbList"></div>
   </div>
   <button class="btn-ghost" onclick="hideLb()">← ফিরে যান</button>
+</div>
+
+<!-- ══ ADMIN LEADERBOARD (printable) ══ -->
+<div id="adminLbSection" style="display:none">
+  <div class="alb-print-bar">
+    <button class="btn-sm" onclick="printAdminLb()">🖨️ প্রিন্ট / PDF সেভ করুন</button>
+    <button class="btn-sm ghost" onclick="closeAdminLb()">✕ বন্ধ করুন</button>
+  </div>
+
+  <div id="adminLbContent">
+    <!-- Print header -->
+    <div class="alb-header">
+      <div class="alb-brand">✦ Dashing Family ✦</div>
+      <h1 class="alb-title">জীবনসঙ্গী মূল্যায়ন</h1>
+      <p class="alb-subtitle">চূড়ান্ত ফলাফল ও লিডারবোর্ড</p>
+      <div class="alb-date" id="albDate"></div>
+    </div>
+
+    <!-- Summary stats -->
+    <div class="alb-stats-row" id="albStats"></div>
+
+    <!-- Ranked table -->
+    <div class="alb-section">
+      <h2 class="alb-section-title">🏆 স্কোর র‍্যাংকিং</h2>
+      <div id="albRankList"></div>
+    </div>
+
+    <!-- Per-person breakdown -->
+    <div class="alb-section">
+      <h2 class="alb-section-title">📊 বিস্তারিত বিশ্লেষণ</h2>
+      <div id="albBreakdown"></div>
+    </div>
+
+    <div class="alb-footer">
+      এই মূল্যায়ন শুধুমাত্র আত্মসচেতনতা ও পারস্পরিক বোঝাপড়ার জন্য।
+      জটিল সম্পর্কে পেশাদার কাউন্সেলরের পরামর্শ নেওয়া উচিত।<br>
+      <strong>✦ Dashing Family ✦</strong>
+    </div>
+  </div>
 </div>
 
 </div><!-- /wrap -->
@@ -842,6 +998,7 @@ function logout() {
   document.getElementById('reviewSection').style.display='none';
   document.getElementById('resultSection').style.display='none';
   document.getElementById('adminSection').style.display='none';
+  document.getElementById('adminLbSection').style.display='none';
   document.getElementById('leaderboardSection').style.display='none';
   document.getElementById('topBar').classList.remove('visible');
   document.getElementById('loginName').value='';
@@ -880,6 +1037,7 @@ function showAdminSection() {
   document.getElementById('reviewSection').style.display='none';
   document.getElementById('resultSection').style.display='none';
   document.getElementById('leaderboardSection').style.display='none';
+  document.getElementById('adminLbSection').style.display='none';
   document.getElementById('adminSection').style.display='block';
   document.getElementById('topBar').classList.add('visible');
   document.getElementById('topBarName').textContent='অ্যাডমিন';
@@ -1140,6 +1298,107 @@ function renderLeaderboard(){
     </div>`;
   });
   document.getElementById('lbList').innerHTML = html || '<div class="empty-state">কোনো তথ্য নেই।</div>';
+}
+
+// ══════════════════════════════════
+//  ADMIN LEADERBOARD PDF
+// ══════════════════════════════════
+function openAdminLeaderboard(){
+  const subs = getSubmissions();
+  if(subs.length === 0){ alert('কোনো মূল্যায়ন নেই।'); return; }
+
+  // Hide all, show admin lb
+  document.getElementById('adminSection').style.display='none';
+  document.getElementById('adminLbSection').style.display='block';
+
+  // Date
+  document.getElementById('albDate').textContent =
+    'তৈরির তারিখ: ' + new Date().toLocaleString('bn-BD',{timeZone:'Asia/Dhaka'});
+
+  const sorted = [...subs].sort((a,b)=>b.total-a.total);
+  const medals = ['🥇','🥈','🥉'];
+  const rankClasses = ['r1','r2','r3'];
+
+  // Stats
+  const avg = Math.round(subs.reduce((a,s)=>a+s.total,0)/subs.length);
+  const high = Math.max(...subs.map(s=>s.total));
+  const low  = Math.min(...subs.map(s=>s.total));
+  document.getElementById('albStats').innerHTML=`
+    <div class="alb-stat"><div class="alb-stat-num">${subs.length}</div><div class="alb-stat-lbl">মোট অংশগ্রহণকারী</div></div>
+    <div class="alb-stat"><div class="alb-stat-num">${avg}</div><div class="alb-stat-lbl">গড় স্কোর</div></div>
+    <div class="alb-stat"><div class="alb-stat-num">${high}</div><div class="alb-stat-lbl">সর্বোচ্চ স্কোর</div></div>
+  `;
+
+  // Rank list
+  let rankHtml='';
+  sorted.forEach((s,i)=>{
+    const pct = s.total;
+    const rc = i<3 ? rankClasses[i] : '';
+    const medal = i<3 ? medals[i] : '';
+    let verdict='';
+    if(s.total>=85) verdict='🌟 অসাধারণ';
+    else if(s.total>=70) verdict='👍 ভালো';
+    else if(s.total>=50) verdict='⚠️ মাঝারি';
+    else verdict='🆘 দুর্বল';
+    rankHtml+=`<div class="alb-rank-row ${rc}">
+      <div class="alb-rank-num">${i+1}</div>
+      <div class="alb-rank-info">
+        <div class="alb-rank-name">${s.name}</div>
+        <span class="alb-rank-role">${s.role}</span>
+      </div>
+      <div class="alb-rank-bar-wrap">
+        <div class="alb-rank-bar-bg"><div class="alb-rank-bar" style="width:${pct}%"></div></div>
+        <div style="font-size:0.65rem;color:var(--muted);margin-top:2px;text-align:center">${verdict}</div>
+      </div>
+      <div class="alb-rank-score">${s.total}<span>/১০০</span></div>
+      <div class="alb-medal">${medal}</div>
+    </div>`;
+  });
+  document.getElementById('albRankList').innerHTML=rankHtml;
+
+  // Per-person breakdown
+  let bdHtml='';
+  sorted.forEach((s,i)=>{
+    let pc,pt;
+    if(s.total>=85){pc='v-excellent';pt='🌟 অসাধারণ';}
+    else if(s.total>=70){pc='v-good';pt='👍 ভালো';}
+    else if(s.total>=50){pc='v-average';pt='⚠️ উন্নতির সুযোগ';}
+    else{pc='v-poor';pt='🆘 মনোযোগ জরুরি';}
+
+    let qHtml='';
+    questions.forEach((q,qi)=>{
+      const sc=s.answers[qi]||0;
+      qHtml+=`<div class="alb-q-row">
+        <div class="alb-q-topic">${q.topic}</div>
+        <div class="alb-q-bar-bg"><div class="alb-q-bar" style="width:${sc*10}%"></div></div>
+        <div class="alb-q-score">${sc}/১০</div>
+      </div>`;
+    });
+
+    bdHtml+=`<div class="alb-person-card">
+      <div class="alb-person-head">
+        <div>
+          <div class="alb-person-name">${i+1}. ${s.name}</div>
+          <div class="alb-person-role">${s.role} • ${s.date}</div>
+        </div>
+        <div style="text-align:right">
+          <div class="alb-person-score">${s.total}/১০০</div>
+          <div class="alb-person-verdict">${pt}</div>
+        </div>
+      </div>
+      <div class="alb-q-rows">${qHtml}</div>
+    </div>`;
+  });
+  document.getElementById('albBreakdown').innerHTML=bdHtml;
+}
+
+function printAdminLb(){
+  window.print();
+}
+
+function closeAdminLb(){
+  document.getElementById('adminLbSection').style.display='none';
+  document.getElementById('adminSection').style.display='block';
 }
 
 // ══════════════════════════════════
