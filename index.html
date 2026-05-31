@@ -390,6 +390,62 @@ header {
 .published-notice p { font-size:0.85rem; color:var(--deep); font-weight:600; }
 .published-notice small { display:block; font-size:0.75rem; color:var(--muted); font-weight:400; margin-top:2px; }
 
+/* ── REVIEW ── */
+#reviewSection { animation: slideUp 0.4s ease; }
+.review-header-card {
+  background: var(--card); border-radius: 24px; padding: 28px 24px;
+  text-align: center; margin-bottom: 20px;
+  box-shadow: 0 4px 24px var(--shadow); border: 1px solid rgba(193,102,107,0.12);
+}
+.review-icon { font-size: 2.5rem; margin-bottom: 10px; }
+.review-header-card h2 { font-family:'Noto Serif Bengali',serif; color:var(--deep); font-size:1.15rem; margin-bottom:8px; }
+.review-header-card p { font-size:0.85rem; color:var(--muted); line-height:1.6; }
+
+.review-item {
+  background: var(--card); border-radius: 20px; padding: 18px 18px 14px;
+  margin-bottom: 14px; box-shadow: 0 2px 12px var(--shadow);
+  border: 1.5px solid rgba(193,102,107,0.1);
+  transition: border-color 0.2s;
+}
+.review-item.editing { border-color: var(--rose); }
+.review-item-top { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:10px; }
+.review-q-topic { font-size:0.78rem; font-weight:700; color:var(--gold); letter-spacing:1px; margin-bottom:4px; }
+.review-q-text { font-family:'Noto Serif Bengali',serif; font-size:0.92rem; color:var(--ink); line-height:1.5; }
+.review-score-display { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
+.review-score-num { font-family:'Noto Serif Bengali',serif; font-size:1.6rem; font-weight:900; color:var(--rose); line-height:1; }
+.review-score-label { font-size:0.68rem; color:var(--muted); margin-top:2px; text-align:center; max-width:60px; }
+.review-edit-area { display:none; margin-top:12px; padding-top:12px; border-top:1px dashed var(--blush); }
+.review-item.editing .review-edit-area { display:block; }
+.review-score-track { display:flex; gap:4px; justify-content:space-between; margin-bottom:6px; }
+.review-score-btn {
+  flex:1; padding:9px 2px; border-radius:8px; border:1.5px solid var(--blush);
+  background:var(--warm); color:var(--muted); font-size:0.8rem; font-weight:600;
+  cursor:pointer; text-align:center; transition:all 0.15s;
+}
+.review-score-btn:hover { border-color:var(--rose); color:var(--rose); }
+.review-score-btn.sel { background:linear-gradient(135deg,var(--rose),var(--deep)); border-color:transparent; color:#fff; transform:scale(1.08); }
+.btn-edit {
+  padding:5px 14px; border-radius:9px; border:1.5px solid var(--blush);
+  background:transparent; color:var(--muted); font-size:0.78rem; font-weight:600;
+  cursor:pointer; transition:all 0.2s; white-space:nowrap;
+}
+.btn-edit:hover { border-color:var(--rose); color:var(--rose); }
+.btn-edit.done { background:linear-gradient(135deg,var(--rose),var(--deep)); border-color:transparent; color:#fff; }
+
+/* delete buttons */
+.del-btn {
+  background:rgba(248,113,113,0.15); border:1.5px solid #f87171;
+  color:#f87171; border-radius:8px; padding:3px 8px; font-size:0.78rem;
+  cursor:pointer; transition:all 0.2s; flex-shrink:0;
+}
+.del-btn:hover { background:#f87171; color:#fff; }
+.del-all-btn {
+  background:rgba(248,113,113,0.1); border:1.5px solid #f87171;
+  color:#f87171; border-radius:10px; padding:6px 12px; font-size:0.78rem;
+  font-weight:600; cursor:pointer; transition:all 0.2s; white-space:nowrap;
+}
+.del-all-btn:hover { background:#f87171; color:#fff; }
+
 /* print styles */
 @media print {
   .top-bar, .btn-ghost, .btn-main, .advice-card, .disclaimer, header { display:none !important; }
@@ -496,6 +552,21 @@ header {
   <button class="btn-main" id="nextBtn" onclick="nextQ()" disabled>পরবর্তী প্রশ্ন →</button>
 </div>
 
+<!-- ══ REVIEW ══ -->
+<div id="reviewSection" style="display:none">
+  <div class="progress-area">
+    <div class="user-badge">👤 <span id="reviewBadgeName">—</span></div>
+  </div>
+  <div class="review-header-card">
+    <div class="review-icon">📝</div>
+    <h2>আপনার উত্তর পর্যালোচনা করুন</h2>
+    <p>প্রয়োজনে যেকোনো উত্তর পরিবর্তন করুন, তারপর সাবমিট করুন।</p>
+  </div>
+  <div id="reviewList"></div>
+  <button class="btn-main" onclick="finalSubmit()">✅ চূড়ান্তভাবে সাবমিট করুন</button>
+  <button class="btn-ghost" onclick="backToQuiz()">← প্রশ্নে ফিরে যান</button>
+</div>
+
 <!-- ══ RESULT ══ -->
 <div id="resultSection">
   <div id="publishedNotice" style="display:none" class="published-notice">
@@ -581,7 +652,10 @@ header {
   </div>
 
   <div class="submissions-card">
-    <h3>📋 জমা দেওয়া মূল্যায়ন</h3>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <h3 style="margin-bottom:0">📋 জমা দেওয়া মূল্যায়ন</h3>
+      <button class="del-all-btn" onclick="confirmDeleteAll()">🗑️ সব মুছুন</button>
+    </div>
     <div id="subsList"></div>
   </div>
 </div>
@@ -765,6 +839,7 @@ function logout() {
   document.getElementById('loginSection').style.display='block';
   document.getElementById('introSection').style.display='none';
   document.getElementById('quizSection').style.display='none';
+  document.getElementById('reviewSection').style.display='none';
   document.getElementById('resultSection').style.display='none';
   document.getElementById('adminSection').style.display='none';
   document.getElementById('leaderboardSection').style.display='none';
@@ -781,6 +856,7 @@ function showUserSection() {
   document.getElementById('loginSection').style.display='none';
   document.getElementById('adminSection').style.display='none';
   document.getElementById('quizSection').style.display='none';
+  document.getElementById('reviewSection').style.display='none';
   document.getElementById('resultSection').style.display='none';
 
   document.getElementById('topBar').classList.add('visible');
@@ -801,6 +877,7 @@ function showAdminSection() {
   document.getElementById('loginSection').style.display='none';
   document.getElementById('introSection').style.display='none';
   document.getElementById('quizSection').style.display='none';
+  document.getElementById('reviewSection').style.display='none';
   document.getElementById('resultSection').style.display='none';
   document.getElementById('leaderboardSection').style.display='none';
   document.getElementById('adminSection').style.display='block';
@@ -875,10 +952,86 @@ function pickScore(v){
 function nextQ(){
   if(answers[cur]===undefined) return;
   if(cur<questions.length-1){ cur++; renderQ(); }
-  else submitQuiz();
+  else showReview();
 }
 
-async function submitQuiz(){
+function showReview(){
+  document.getElementById('quizSection').style.display='none';
+  document.getElementById('reviewSection').style.display='block';
+  document.getElementById('reviewBadgeName').textContent = uName + ' (' + uRole + ')';
+  renderReview();
+}
+
+function renderReview(){
+  let html='';
+  questions.forEach((q,i)=>{
+    const sc = answers[i];
+    let btnHtml='';
+    for(let v=1;v<=10;v++){
+      btnHtml+=`<button class="review-score-btn ${sc===v?'sel':''}" onclick="editScore(${i},${v})">${v}</button>`;
+    }
+    html+=`<div class="review-item" id="ritem-${i}">
+      <div class="review-item-top">
+        <div style="flex:1">
+          <div class="review-q-topic">${q.topic}</div>
+          <div class="review-q-text">${q.q}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div class="review-score-display">
+            <div class="review-score-num" id="rscore-${i}">${sc}</div>
+            <div class="review-score-label" id="rscoreLabel-${i}">${scoreLabels[sc]}</div>
+          </div>
+          <button class="btn-edit" id="redit-${i}" onclick="toggleEdit(${i})">✏️ এডিট</button>
+        </div>
+      </div>
+      <div class="review-edit-area" id="redit-area-${i}">
+        <div class="review-score-track">${btnHtml}</div>
+        <div style="text-align:center;font-size:0.78rem;color:var(--muted);margin-top:4px">
+          <span>১ = ${q.meanings[0]}</span> &nbsp;•&nbsp; <span>১০ = ${q.meanings[1]}</span>
+        </div>
+      </div>
+    </div>`;
+  });
+  document.getElementById('reviewList').innerHTML=html;
+}
+
+function toggleEdit(i){
+  const item = document.getElementById(`ritem-${i}`);
+  const btn = document.getElementById(`redit-${i}`);
+  const isEditing = item.classList.contains('editing');
+  if(isEditing){
+    item.classList.remove('editing');
+    btn.textContent='✏️ এডিট';
+    btn.classList.remove('done');
+  } else {
+    item.classList.add('editing');
+    btn.textContent='✔ সম্পন্ন';
+    btn.classList.add('done');
+  }
+}
+
+function editScore(i, v){
+  answers[i]=v;
+  document.getElementById(`rscore-${i}`).textContent=v;
+  document.getElementById(`rscoreLabel-${i}`).textContent=scoreLabels[v];
+  // update buttons
+  const area = document.getElementById(`redit-area-${i}`);
+  area.querySelectorAll('.review-score-btn').forEach((b,idx)=>{
+    b.classList.toggle('sel', idx+1===v);
+  });
+}
+
+function backToQuiz(){
+  cur=questions.length-1;
+  document.getElementById('reviewSection').style.display='none';
+  document.getElementById('quizSection').style.display='block';
+  renderQ();
+}
+
+async function finalSubmit(){
+  const btn = document.querySelector('#reviewSection .btn-main');
+  btn.disabled=true;
+  btn.textContent='সাবমিট হচ্ছে...';
   const id = makeUserId(uName, uRole);
   const entry = {
     id, name:uName, role:uRole,
@@ -887,8 +1040,7 @@ async function submitQuiz(){
     date: new Date().toLocaleString('bn-BD', {timeZone:'Asia/Dhaka'})
   };
   await saveSubmission(entry);
-
-  document.getElementById('quizSection').style.display='none';
+  document.getElementById('reviewSection').style.display='none';
   displayResult(answers, uName, uRole);
 }
 
@@ -1053,7 +1205,10 @@ function renderAdmin(filter){
     html+=`<div class="sub-item" onclick="showDetail('${s.id}')">
       <div class="sub-top">
         <div class="sub-name">${s.name}</div>
-        <div class="sub-role">${s.role}</div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="sub-role">${s.role}</div>
+          <button class="del-btn" onclick="event.stopPropagation();confirmDelete('${s.id}','${s.name}')">🗑️</button>
+        </div>
       </div>
       <div class="sub-score-row">
         <div class="sub-score-bar-bg"><div class="sub-score-bar" style="width:${pct}%"></div></div>
@@ -1095,6 +1250,20 @@ function showDetail(id){
 function closeModal(e){
   if(e.target===document.getElementById('detailModal'))
     document.getElementById('detailModal').classList.remove('open');
+}
+
+async function confirmDelete(id, name){
+  if(!confirm(`"${name}" এর মূল্যায়ন মুছে ফেলবেন?`)) return;
+  await deleteSubmission(id);
+  renderAdmin(currentFilter);
+}
+
+async function confirmDeleteAll(){
+  const subs = getSubmissions();
+  if(subs.length === 0) return alert('কোনো মূল্যায়ন নেই।');
+  if(!confirm(`সব ${subs.length} টি মূল্যায়ন মুছে ফেলবেন? এটি পূর্বাবস্থায় ফেরানো যাবে না!`)) return;
+  await subsRef.remove();
+  renderAdmin(currentFilter);
 }
 
 // ══════════════════════════════════
