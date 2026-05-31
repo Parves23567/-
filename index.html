@@ -5,6 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>জীবনসঙ্গী মূল্যায়ন – Dashing Family</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700;900&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCD0VlQlogb8suSbh2GFkxEdWMbQ--ugn4",
+    authDomain: "familyapp-b0a52.firebaseapp.com",
+    databaseURL: "https://familyapp-b0a52-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "familyapp-b0a52",
+    storageBucket: "familyapp-b0a52.firebasestorage.app",
+    messagingSenderId: "774001001178",
+    appId: "1:774001001178:web:6e7dd5a7f220c68f51dbe3",
+    measurementId: "G-Q0HSLHYWL1"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+</script>
 <style>
 :root {
   --cream: #fdf6ee;
@@ -604,9 +621,44 @@ header {
 //  CONFIG
 // ══════════════════════════════════
 const ADMIN_PASS = 'admin2024';
-const STORAGE_KEY = 'df_submissions_v2';
 const SESSION_KEY = 'df_session_v2';
-const PUBLISH_KEY = 'df_published_v2';
+
+// Firebase refs
+const subsRef = db.ref('submissions');
+const publishRef = db.ref('published');
+
+// In-memory cache (synced from Firebase)
+let _submissions = [];
+let _published = null;
+
+// Load submissions from Firebase on startup
+subsRef.on('value', snap => {
+  const data = snap.val();
+  _submissions = data ? Object.values(data) : [];
+  // Re-render admin if open
+  if (document.getElementById('adminSection').style.display === 'block') {
+    renderAdmin(currentFilter);
+  }
+  // Re-render leaderboard if open
+  if (document.getElementById('leaderboardSection').style.display === 'block') {
+    renderLeaderboard();
+  }
+});
+
+publishRef.on('value', snap => {
+  _published = snap.val();
+  // Update publish toggle if admin panel open
+  const tog = document.getElementById('publishToggle');
+  if (tog) {
+    tog.checked = !!_published;
+    document.getElementById('publishLabel').textContent = _published ? 'চালু' : 'বন্ধ';
+  }
+  // Show/hide published notice in result
+  const notice = document.getElementById('publishedNotice');
+  const lbBtn = document.getElementById('viewLbBtn');
+  if (notice) notice.style.display = _published ? 'flex' : 'none';
+  if (lbBtn) lbBtn.style.display = _published ? 'block' : 'none';
+});
 
 // ══════════════════════════════════
 //  QUESTIONS
@@ -638,14 +690,18 @@ const advices = [
 ];
 
 // ══════════════════════════════════
-//  STORAGE HELPERS
+//  STORAGE HELPERS (Firebase)
 // ══════════════════════════════════
 function getSubmissions() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch(e){ return []; }
+  return _submissions;
 }
-function saveSubmissions(arr) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+async function saveSubmission(entry) {
+  await subsRef.child(entry.id).set(entry);
 }
+async function deleteSubmission(id) {
+  await subsRef.child(id).remove();
+}
+
 function getSession() {
   try { return JSON.parse(sessionStorage.getItem(SESSION_KEY) || 'null'); } catch(e){ return null; }
 }
@@ -653,11 +709,11 @@ function setSession(obj) { sessionStorage.setItem(SESSION_KEY, JSON.stringify(ob
 function clearSession() { sessionStorage.removeItem(SESSION_KEY); }
 
 function isPublished() {
-  try { return JSON.parse(localStorage.getItem(PUBLISH_KEY) || 'null'); } catch(e){ return null; }
+  return _published;
 }
-function setPublished(val) {
-  if (val) localStorage.setItem(PUBLISH_KEY, JSON.stringify({ on: true, date: new Date().toLocaleString('bn-BD',{timeZone:'Asia/Dhaka'}) }));
-  else localStorage.removeItem(PUBLISH_KEY);
+async function setPublished(val) {
+  if (val) await publishRef.set({ on: true, date: new Date().toLocaleString('bn-BD',{timeZone:'Asia/Dhaka'}) });
+  else await publishRef.remove();
 }
 
 function makeUserId(name, role) {
@@ -666,8 +722,7 @@ function makeUserId(name, role) {
 
 function findSubmission(name, role) {
   const id = makeUserId(name, role);
-  const subs = getSubmissions();
-  return subs.find(s => s.id === id) || null;
+  return _submissions.find(s => s.id === id) || null;
 }
 
 // ══════════════════════════════════
@@ -769,12 +824,9 @@ function startQuiz() {
   renderQ();
 }
 
-function redoQuiz() {
-  // remove existing submission then start fresh
+async function redoQuiz() {
   const id = makeUserId(uName, uRole);
-  let subs = getSubmissions();
-  subs = subs.filter(s => s.id !== id);
-  saveSubmissions(subs);
+  await deleteSubmission(id);
   cur=0; answers=[];
   document.getElementById('alreadyDoneBox').style.display='none';
   document.getElementById('freshIntroBox').style.display='block';
@@ -826,19 +878,15 @@ function nextQ(){
   else submitQuiz();
 }
 
-function submitQuiz(){
-  // save to localStorage
+async function submitQuiz(){
   const id = makeUserId(uName, uRole);
-  const subs = getSubmissions();
-  const idx = subs.findIndex(s=>s.id===id);
   const entry = {
     id, name:uName, role:uRole,
     answers:[...answers],
     total: answers.reduce((a,b)=>a+b,0),
     date: new Date().toLocaleString('bn-BD', {timeZone:'Asia/Dhaka'})
   };
-  if(idx>=0) subs[idx]=entry; else subs.push(entry);
-  saveSubmissions(subs);
+  await saveSubmission(entry);
 
   document.getElementById('quizSection').style.display='none';
   displayResult(answers, uName, uRole);
@@ -851,7 +899,7 @@ function displayResult(ans, name, role){
   document.getElementById('resultSection').style.display='block';
   document.getElementById('resultSection').classList.add('show');
 
-  // published notice
+  // published notice (driven by Firebase realtime listener)
   const pub = isPublished();
   document.getElementById('publishedNotice').style.display = pub ? 'flex' : 'none';
   document.getElementById('viewLbBtn').style.display = pub ? 'block' : 'none';
@@ -897,9 +945,9 @@ function printResult(){ window.print(); }
 // ══════════════════════════════════
 //  PUBLISH & LEADERBOARD
 // ══════════════════════════════════
-function togglePublish(){
+async function togglePublish(){
   const on = document.getElementById('publishToggle').checked;
-  setPublished(on);
+  await setPublished(on);
   document.getElementById('publishLabel').textContent = on ? 'চালু' : 'বন্ধ';
 }
 
