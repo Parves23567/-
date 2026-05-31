@@ -302,6 +302,84 @@ header {
 .avg-val { font-size:0.72rem; font-weight:700; color:var(--rose); min-width:28px; }
 
 @media(max-width:400px){ .stats-row{grid-template-columns:1fr 1fr;} }
+
+/* ── LEADERBOARD ── */
+#leaderboardSection { display:none; }
+.lb-header {
+  background:linear-gradient(135deg, #1a0a0d, #7b2d35);
+  border-radius:24px; padding:28px 24px; text-align:center;
+  margin-bottom:20px; position:relative; overflow:hidden;
+}
+.lb-header::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 0%,rgba(196,154,60,0.25),transparent 65%); }
+.lb-header h2 { font-family:'Noto Serif Bengali',serif; color:#fff; font-size:1.5rem; font-weight:900; position:relative; margin-bottom:4px; }
+.lb-header p { font-size:0.8rem; color:var(--gold2); position:relative; }
+.lb-published-date { font-size:0.72rem; color:rgba(255,255,255,0.5); margin-top:6px; position:relative; }
+
+.lb-card { background:var(--card); border-radius:24px; padding:20px; box-shadow:0 4px 24px var(--shadow); border:1px solid rgba(193,102,107,0.1); margin-bottom:20px; }
+.lb-card h3 { font-family:'Noto Serif Bengali',serif; font-size:1rem; color:var(--deep); margin-bottom:16px; text-align:center; }
+
+.lb-row {
+  display:flex; align-items:center; gap:12px;
+  padding:12px 10px; border-radius:14px; margin-bottom:8px;
+  border:1px solid rgba(193,102,107,0.1); background:var(--warm);
+}
+.lb-row:last-child { margin-bottom:0; }
+.lb-row.rank-1 { background:linear-gradient(135deg,rgba(196,154,60,0.15),rgba(232,197,109,0.08)); border-color:var(--gold); }
+.lb-row.rank-2 { background:linear-gradient(135deg,rgba(180,180,180,0.12),rgba(200,200,200,0.06)); border-color:#aaa; }
+.lb-row.rank-3 { background:linear-gradient(135deg,rgba(180,100,60,0.12),rgba(200,120,80,0.06)); border-color:#c87c50; }
+
+.lb-rank {
+  width:36px; height:36px; border-radius:50%; display:flex;
+  align-items:center; justify-content:center; font-weight:900;
+  font-size:0.9rem; flex-shrink:0; background:var(--blush); color:var(--deep);
+}
+.lb-row.rank-1 .lb-rank { background:linear-gradient(135deg,#c49a3c,#e8c56d); color:#fff; font-size:1.1rem; }
+.lb-row.rank-2 .lb-rank { background:linear-gradient(135deg,#888,#bbb); color:#fff; }
+.lb-row.rank-3 .lb-rank { background:linear-gradient(135deg,#a0522d,#cd853f); color:#fff; }
+
+.lb-info { flex:1; min-width:0; }
+.lb-name { font-family:'Noto Serif Bengali',serif; font-weight:700; color:var(--deep); font-size:0.95rem; }
+.lb-role-tag { font-size:0.7rem; color:var(--muted); background:var(--blush); padding:2px 8px; border-radius:99px; display:inline-block; margin-top:3px; }
+
+.lb-score-col { text-align:right; flex-shrink:0; }
+.lb-score-num { font-family:'Noto Serif Bengali',serif; font-size:1.3rem; font-weight:900; color:var(--deep); line-height:1; }
+.lb-score-max { font-size:0.65rem; color:var(--muted); }
+.lb-medal { font-size:1.4rem; flex-shrink:0; width:24px; text-align:center; }
+
+/* publish toggle in admin */
+.publish-bar {
+  background:linear-gradient(135deg,#fdf0e8,#fdf6ee); border:1px solid var(--blush);
+  border-radius:20px; padding:18px 20px; margin-bottom:20px;
+  display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+}
+.publish-bar-info h4 { font-family:'Noto Serif Bengali',serif; color:var(--deep); font-size:0.95rem; margin-bottom:3px; }
+.publish-bar-info p { font-size:0.78rem; color:var(--muted); }
+.toggle-wrap { display:flex; align-items:center; gap:10px; }
+.toggle-switch { position:relative; width:52px; height:28px; cursor:pointer; }
+.toggle-switch input { opacity:0; width:0; height:0; }
+.toggle-slider { position:absolute; inset:0; background:var(--blush); border-radius:99px; transition:0.3s; }
+.toggle-slider::before { content:''; position:absolute; width:22px; height:22px; left:3px; top:3px; background:#fff; border-radius:50%; transition:0.3s; box-shadow:0 1px 4px rgba(0,0,0,0.2); }
+.toggle-switch input:checked + .toggle-slider { background:linear-gradient(135deg,var(--rose),var(--deep)); }
+.toggle-switch input:checked + .toggle-slider::before { transform:translateX(24px); }
+.toggle-label { font-size:0.82rem; font-weight:600; color:var(--muted); }
+
+/* published notice for user */
+.published-notice {
+  background:linear-gradient(135deg,rgba(196,154,60,0.12),rgba(193,102,107,0.08));
+  border:1.5px solid var(--gold); border-radius:16px; padding:14px 18px;
+  margin-bottom:16px; display:flex; align-items:center; gap:10px;
+}
+.published-notice .notice-icon { font-size:1.4rem; flex-shrink:0; }
+.published-notice p { font-size:0.85rem; color:var(--deep); font-weight:600; }
+.published-notice small { display:block; font-size:0.75rem; color:var(--muted); font-weight:400; margin-top:2px; }
+
+/* print styles */
+@media print {
+  .top-bar, .btn-ghost, .btn-main, .advice-card, .disclaimer, header { display:none !important; }
+  #resultSection { display:block !important; }
+  .footer-brand { display:block !important; }
+  body { background:#fff; }
+}
 </style>
 </head>
 <body>
@@ -403,6 +481,10 @@ header {
 
 <!-- ══ RESULT ══ -->
 <div id="resultSection">
+  <div id="publishedNotice" style="display:none" class="published-notice">
+    <div class="notice-icon">📢</div>
+    <div><p>আপনার ফলাফল লিডারবোর্ডে প্রকাশিত হয়েছে</p><small>অ্যাডমিন সবার স্কোর শেয়ার করেছেন</small></div>
+  </div>
   <div class="result-header">
     <div class="result-name" id="rName"></div>
     <div class="result-title">জীবনসঙ্গী মূল্যায়ন ফলাফল</div>
@@ -436,6 +518,7 @@ header {
     <p id="adviceText"></p>
   </div>
   <button class="btn-ghost" onclick="printResult()">🖨️ ফলাফল প্রিন্ট করুন</button>
+  <button class="btn-ghost" id="viewLbBtn" style="display:none" onclick="showLeaderboard()">🏆 লিডারবোর্ড দেখুন</button>
   <p class="disclaimer">এই মূল্যায়ন শুধুমাত্র আত্মসচেতনতা ও পারস্পরিক বোঝাপড়ার জন্য।<br>জটিল সম্পর্কে পেশাদার কাউন্সেলরের পরামর্শ নেওয়া উচিত।</p>
   <div class="footer-brand">✦ Dashing Family ✦</div>
 </div>
@@ -445,6 +528,21 @@ header {
   <div class="admin-header">
     <h2>🔐 অ্যাডমিন প্যানেল</h2>
     <p>সকল মূল্যায়নের তথ্য ও বিশ্লেষণ</p>
+  </div>
+
+  <!-- PUBLISH TOGGLE -->
+  <div class="publish-bar">
+    <div class="publish-bar-info">
+      <h4>📢 লিডারবোর্ড প্রকাশ</h4>
+      <p>চালু করলে সব ব্যবহারকারী স্কোর র‍্যাংকিং দেখতে পাবে</p>
+    </div>
+    <div class="toggle-wrap">
+      <span class="toggle-label" id="publishLabel">বন্ধ</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="publishToggle" onchange="togglePublish()">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
   </div>
 
   <div class="stats-row" id="statsRow">
@@ -471,6 +569,20 @@ header {
   </div>
 </div>
 
+<!-- ══ LEADERBOARD (user view) ══ -->
+<div id="leaderboardSection">
+  <div class="lb-header">
+    <h2>🏆 লিডারবোর্ড</h2>
+    <p>Dashing Family — জীবনসঙ্গী মূল্যায়ন</p>
+    <div class="lb-published-date" id="lbPublishedDate"></div>
+  </div>
+  <div class="lb-card">
+    <h3>স্কোর র‍্যাংকিং</h3>
+    <div id="lbList"></div>
+  </div>
+  <button class="btn-ghost" onclick="hideLb()">← ফিরে যান</button>
+</div>
+
 </div><!-- /wrap -->
 
 <!-- DETAIL MODAL -->
@@ -494,6 +606,7 @@ header {
 const ADMIN_PASS = 'admin2024';
 const STORAGE_KEY = 'df_submissions_v2';
 const SESSION_KEY = 'df_session_v2';
+const PUBLISH_KEY = 'df_published_v2';
 
 // ══════════════════════════════════
 //  QUESTIONS
@@ -538,6 +651,14 @@ function getSession() {
 }
 function setSession(obj) { sessionStorage.setItem(SESSION_KEY, JSON.stringify(obj)); }
 function clearSession() { sessionStorage.removeItem(SESSION_KEY); }
+
+function isPublished() {
+  try { return JSON.parse(localStorage.getItem(PUBLISH_KEY) || 'null'); } catch(e){ return null; }
+}
+function setPublished(val) {
+  if (val) localStorage.setItem(PUBLISH_KEY, JSON.stringify({ on: true, date: new Date().toLocaleString('bn-BD',{timeZone:'Asia/Dhaka'}) }));
+  else localStorage.removeItem(PUBLISH_KEY);
+}
 
 function makeUserId(name, role) {
   return (name.trim().toLowerCase() + '_' + role).replace(/\s+/g,'_');
@@ -591,9 +712,9 @@ function logout() {
   document.getElementById('quizSection').style.display='none';
   document.getElementById('resultSection').style.display='none';
   document.getElementById('adminSection').style.display='none';
+  document.getElementById('leaderboardSection').style.display='none';
   document.getElementById('topBar').classList.remove('visible');
   document.getElementById('loginName').value='';
-  document.getElementById('loginPass').value='';
   document.getElementById('loginRole').value='';
   document.getElementById('adminPass').value='';
 }
@@ -626,9 +747,14 @@ function showAdminSection() {
   document.getElementById('introSection').style.display='none';
   document.getElementById('quizSection').style.display='none';
   document.getElementById('resultSection').style.display='none';
+  document.getElementById('leaderboardSection').style.display='none';
   document.getElementById('adminSection').style.display='block';
   document.getElementById('topBar').classList.add('visible');
   document.getElementById('topBarName').textContent='অ্যাডমিন';
+  // sync toggle
+  const pub = isPublished();
+  document.getElementById('publishToggle').checked = !!pub;
+  document.getElementById('publishLabel').textContent = pub ? 'চালু' : 'বন্ধ';
   renderAdmin('all');
 }
 
@@ -724,6 +850,12 @@ function submitQuiz(){
 function displayResult(ans, name, role){
   document.getElementById('resultSection').style.display='block';
   document.getElementById('resultSection').classList.add('show');
+
+  // published notice
+  const pub = isPublished();
+  document.getElementById('publishedNotice').style.display = pub ? 'flex' : 'none';
+  document.getElementById('viewLbBtn').style.display = pub ? 'block' : 'none';
+
   const total = ans.reduce((a,b)=>a+b,0);
   const evaluatee = role==='স্বামী'?'স্ত্রীর':'স্বামীর';
   document.getElementById('rName').textContent = name+' কর্তৃক '+evaluatee+' মূল্যায়ন';
@@ -761,6 +893,54 @@ function displayResult(ans, name, role){
 }
 
 function printResult(){ window.print(); }
+
+// ══════════════════════════════════
+//  PUBLISH & LEADERBOARD
+// ══════════════════════════════════
+function togglePublish(){
+  const on = document.getElementById('publishToggle').checked;
+  setPublished(on);
+  document.getElementById('publishLabel').textContent = on ? 'চালু' : 'বন্ধ';
+}
+
+function showLeaderboard(){
+  document.getElementById('resultSection').style.display='none';
+  document.getElementById('leaderboardSection').style.display='block';
+  renderLeaderboard();
+}
+
+function hideLb(){
+  document.getElementById('leaderboardSection').style.display='none';
+  document.getElementById('resultSection').style.display='block';
+}
+
+function renderLeaderboard(){
+  const pub = isPublished();
+  if(pub && pub.date){
+    document.getElementById('lbPublishedDate').textContent = 'প্রকাশিত: ' + pub.date;
+  }
+  const subs = getSubmissions();
+  const sorted = [...subs].sort((a,b)=>b.total-a.total);
+  const medals = ['🥇','🥈','🥉'];
+  let html = '';
+  sorted.forEach((s, i) => {
+    const rankClass = i<3 ? `rank-${i+1}` : '';
+    const medal = i<3 ? medals[i] : '';
+    html += `<div class="lb-row ${rankClass}">
+      <div class="lb-rank">${i+1}</div>
+      <div class="lb-info">
+        <div class="lb-name">${s.name}</div>
+        <span class="lb-role-tag">${s.role}</span>
+      </div>
+      <div class="lb-score-col">
+        <div class="lb-score-num">${s.total}</div>
+        <div class="lb-score-max">/ ১০০</div>
+      </div>
+      <div class="lb-medal">${medal}</div>
+    </div>`;
+  });
+  document.getElementById('lbList').innerHTML = html || '<div class="empty-state">কোনো তথ্য নেই।</div>';
+}
 
 // ══════════════════════════════════
 //  ADMIN
