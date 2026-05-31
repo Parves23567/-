@@ -31,376 +31,277 @@ body {
     radial-gradient(ellipse at 90% 100%, rgba(196,154,60,0.07) 0%, transparent 55%);
 }
 
-/* ── ORNAMENT ── */
-.ornament {
-  text-align: center;
-  font-size: 1.1rem;
-  color: var(--gold);
-  letter-spacing: 6px;
-  opacity: 0.7;
-}
+.ornament { text-align:center; font-size:1.1rem; color:var(--gold); letter-spacing:6px; opacity:0.7; }
 
-/* ── HEADER ── */
 header {
   padding: 36px 20px 24px;
   text-align: center;
   position: relative;
 }
-.brand-tag {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 8px;
-}
+.brand-tag { font-size:0.72rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
 .app-title {
   font-family: 'Noto Serif Bengali', serif;
   font-size: clamp(1.8rem, 6vw, 2.8rem);
-  font-weight: 900;
-  color: var(--deep);
-  line-height: 1.2;
-  position: relative;
-  display: inline-block;
+  font-weight: 900; color: var(--deep); line-height:1.2;
+  position:relative; display:inline-block;
 }
 .app-title::after {
-  content: '';
-  display: block;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, var(--gold), var(--rose), var(--gold), transparent);
-  margin: 10px auto 0;
-  border-radius: 2px;
+  content:''; display:block; height:3px;
+  background:linear-gradient(90deg, transparent, var(--gold), var(--rose), var(--gold), transparent);
+  margin:10px auto 0; border-radius:2px;
   animation: shimmer 3s ease-in-out infinite;
 }
 @keyframes shimmer { 0%,100%{opacity:0.6} 50%{opacity:1} }
+.subtitle { margin-top:8px; font-size:0.88rem; color:var(--muted); }
 
-.subtitle {
-  margin-top: 8px;
-  font-size: 0.88rem;
-  color: var(--muted);
-}
-.maker {
-  margin-top: 5px;
-  font-size: 0.75rem;
-  color: var(--gold);
-  font-weight: 600;
-  letter-spacing: 1px;
-}
+.divider { display:flex; align-items:center; gap:12px; max-width:500px; margin:0 auto 28px; padding:0 20px; }
+.divider-line { flex:1; height:1px; background:linear-gradient(90deg, transparent, var(--blush)); }
+.divider-line.r { background:linear-gradient(90deg, var(--blush), transparent); }
+.divider-icon { color:var(--rose); font-size:1rem; }
 
-/* ── DIVIDER ── */
-.divider {
-  display: flex; align-items: center; gap: 12px;
-  max-width: 500px; margin: 0 auto 28px;
-  padding: 0 20px;
-}
-.divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--blush)); }
-.divider-line.r { background: linear-gradient(90deg, var(--blush), transparent); }
-.divider-icon { color: var(--rose); font-size: 1rem; }
+.wrap { max-width:620px; margin:0 auto; padding:0 16px 60px; }
 
-/* ── CONTAINER ── */
-.wrap { max-width: 620px; margin: 0 auto; padding: 0 16px 60px; }
+/* ── LOGIN ── */
+#loginSection {}
+.login-card {
+  background: var(--card); border-radius:24px; padding:32px 24px;
+  box-shadow: 0 4px 24px var(--shadow), 0 1px 4px rgba(0,0,0,0.04);
+  border: 1px solid rgba(193,102,107,0.12); margin-bottom:20px;
+}
+.login-card h2 {
+  font-family:'Noto Serif Bengali', serif; font-size:1.2rem;
+  color:var(--deep); margin-bottom:20px; text-align:center;
+}
+.field-group { margin-bottom:16px; }
+.field-group label { display:block; font-size:0.82rem; font-weight:600; color:var(--muted); margin-bottom:6px; }
+.field-group input, .field-group select {
+  width:100%; padding:12px 14px; border-radius:12px;
+  border:1.5px solid var(--blush); background:var(--warm);
+  font-family:'Hind Siliguri', sans-serif; font-size:0.95rem;
+  color:var(--ink); outline:none; transition:border-color 0.2s;
+}
+.field-group input:focus, .field-group select:focus { border-color:var(--rose); }
+.field-group input::placeholder { color:#b09080; }
+.login-tabs { display:flex; gap:8px; margin-bottom:24px; }
+.login-tab {
+  flex:1; padding:10px; border-radius:12px; border:1.5px solid var(--blush);
+  background:transparent; font-family:'Hind Siliguri',sans-serif; font-size:0.9rem;
+  color:var(--muted); cursor:pointer; transition:all 0.2s; text-align:center; font-weight:500;
+}
+.login-tab.active { background:linear-gradient(135deg,var(--rose),var(--deep)); border-color:transparent; color:#fff; }
+.error-msg { color:#e53e3e; font-size:0.82rem; text-align:center; margin-top:8px; min-height:20px; }
 
 /* ── INTRO ── */
-#introSection {}
+#introSection { display:none; }
 .intro-card {
-  background: var(--card);
-  border-radius: 24px;
-  padding: 30px 24px;
-  box-shadow: 0 4px 24px var(--shadow), 0 1px 4px rgba(0,0,0,0.04);
-  border: 1px solid rgba(193,102,107,0.12);
-  margin-bottom: 20px;
-  text-align: center;
+  background:var(--card); border-radius:24px; padding:30px 24px;
+  box-shadow:0 4px 24px var(--shadow), 0 1px 4px rgba(0,0,0,0.04);
+  border:1px solid rgba(193,102,107,0.12); margin-bottom:20px; text-align:center;
 }
-.intro-card h2 {
-  font-family: 'Noto Serif Bengali', serif;
-  font-size: 1.15rem;
-  color: var(--deep);
-  margin-bottom: 14px;
-}
-.intro-card p { font-size: 0.9rem; line-height: 1.8; color: var(--muted); }
-.q-chips {
-  display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
-  margin-top: 18px;
-}
-.q-chip {
-  padding: 5px 14px; border-radius: 99px;
-  font-size: 0.78rem; font-weight: 500;
-  background: var(--warm);
-  border: 1px solid var(--blush);
-  color: var(--deep);
-}
+.intro-card h2 { font-family:'Noto Serif Bengali',serif; font-size:1.15rem; color:var(--deep); margin-bottom:14px; }
+.intro-card p { font-size:0.9rem; line-height:1.8; color:var(--muted); }
+.q-chips { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:18px; }
+.q-chip { padding:5px 14px; border-radius:99px; font-size:0.78rem; font-weight:500; background:var(--warm); border:1px solid var(--blush); color:var(--deep); }
 
-/* NAME INPUT */
 .name-card {
-  background: var(--card);
-  border-radius: 24px;
-  padding: 28px 24px;
-  box-shadow: 0 4px 24px var(--shadow);
-  border: 1px solid rgba(193,102,107,0.12);
-  margin-bottom: 20px;
+  background:var(--card); border-radius:24px; padding:28px 24px;
+  box-shadow:0 4px 24px var(--shadow); border:1px solid rgba(193,102,107,0.12); margin-bottom:20px;
 }
-.name-card label {
-  display: block;
-  font-family: 'Noto Serif Bengali', serif;
-  font-size: 1rem;
-  color: var(--deep);
-  font-weight: 600;
-  margin-bottom: 12px;
-  text-align: center;
-}
-.name-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.name-card label { display:block; font-family:'Noto Serif Bengali',serif; font-size:1rem; color:var(--deep); font-weight:600; margin-bottom:12px; text-align:center; }
+.name-inputs { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
 .name-inputs input, .name-inputs select {
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: 12px;
-  border: 1.5px solid var(--blush);
-  background: var(--warm);
-  font-family: 'Hind Siliguri', sans-serif;
-  font-size: 0.95rem;
-  color: var(--ink);
-  outline: none;
-  transition: border-color 0.2s;
+  width:100%; padding:12px 14px; border-radius:12px; border:1.5px solid var(--blush);
+  background:var(--warm); font-family:'Hind Siliguri',sans-serif; font-size:0.95rem; color:var(--ink); outline:none; transition:border-color 0.2s;
 }
-.name-inputs input:focus, .name-inputs select:focus { border-color: var(--rose); }
-.name-inputs input::placeholder { color: #b09080; }
-@media(max-width:420px){ .name-inputs { grid-template-columns: 1fr; } }
+.name-inputs input:focus, .name-inputs select:focus { border-color:var(--rose); }
+.name-inputs input::placeholder { color:#b09080; }
+@media(max-width:420px){ .name-inputs { grid-template-columns:1fr; } }
+
+.already-done-card {
+  background:linear-gradient(135deg,#fdf0e8,#fdf6ee); border:1px solid var(--blush);
+  border-radius:20px; padding:24px; margin-bottom:20px; text-align:center;
+}
+.already-done-card h3 { font-family:'Noto Serif Bengali',serif; color:var(--deep); margin-bottom:8px; }
+.already-done-card p { font-size:0.88rem; color:var(--muted); line-height:1.7; }
 
 /* ── BTN ── */
 .btn-main {
-  width: 100%; padding: 15px;
-  border-radius: 16px; border: none;
-  background: linear-gradient(135deg, var(--rose), var(--deep));
-  color: #fff;
-  font-family: 'Noto Serif Bengali', serif;
-  font-size: 1.05rem; font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 16px rgba(123,45,53,0.3);
-  letter-spacing: 0.5px;
+  width:100%; padding:15px; border-radius:16px; border:none;
+  background:linear-gradient(135deg, var(--rose), var(--deep));
+  color:#fff; font-family:'Noto Serif Bengali',serif;
+  font-size:1.05rem; font-weight:700; cursor:pointer;
+  transition:transform 0.2s, box-shadow 0.2s;
+  box-shadow:0 4px 16px rgba(123,45,53,0.3); letter-spacing:0.5px;
 }
-.btn-main:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(123,45,53,0.35); }
-.btn-main:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+.btn-main:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(123,45,53,0.35); }
+.btn-main:disabled { opacity:0.4; cursor:not-allowed; transform:none; }
 .btn-ghost {
-  width: 100%; padding: 13px;
-  border-radius: 16px;
-  border: 1.5px solid var(--blush);
-  background: transparent;
-  color: var(--muted);
-  font-family: 'Hind Siliguri', sans-serif;
-  font-size: 0.95rem;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: all 0.2s;
+  width:100%; padding:13px; border-radius:16px; border:1.5px solid var(--blush);
+  background:transparent; color:var(--muted); font-family:'Hind Siliguri',sans-serif;
+  font-size:0.95rem; cursor:pointer; margin-top:10px; transition:all 0.2s;
 }
-.btn-ghost:hover { border-color: var(--rose); color: var(--rose); }
+.btn-ghost:hover { border-color:var(--rose); color:var(--rose); }
+.btn-sm {
+  padding:7px 16px; border-radius:10px; border:none;
+  background:linear-gradient(135deg,var(--rose),var(--deep));
+  color:#fff; font-family:'Hind Siliguri',sans-serif;
+  font-size:0.8rem; font-weight:600; cursor:pointer;
+  transition:transform 0.15s; display:inline-block;
+}
+.btn-sm:hover { transform:translateY(-1px); }
+.btn-sm.ghost { background:transparent; border:1.5px solid var(--blush); color:var(--muted); }
+.btn-sm.ghost:hover { border-color:var(--rose); color:var(--rose); }
 
 /* ── PROGRESS ── */
-.progress-area {
-  max-width: 620px; margin: 0 auto 24px;
-  padding: 0 16px;
-}
-.progress-top {
-  display: flex; justify-content: space-between; align-items: center;
-  margin-bottom: 8px;
-}
-.progress-q-label { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
-.progress-pct { font-size: 0.8rem; color: var(--rose); font-weight: 700; }
-.pbar-bg {
-  height: 7px; border-radius: 99px;
-  background: var(--blush); overflow: hidden;
-}
-.pbar-fill {
-  height: 100%; border-radius: 99px;
-  background: linear-gradient(90deg, var(--rose), var(--gold));
-  transition: width 0.5s cubic-bezier(.4,0,.2,1);
-}
-.user-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: var(--warm); border: 1px solid var(--blush);
-  border-radius: 99px; padding: 4px 14px;
-  font-size: 0.8rem; color: var(--deep); font-weight: 600;
-  margin-bottom: 12px;
-}
-.user-badge span { color: var(--rose); }
+.progress-area { max-width:620px; margin:0 auto 24px; padding:0 16px; }
+.progress-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+.progress-q-label { font-size:0.8rem; color:var(--muted); font-weight:500; }
+.progress-pct { font-size:0.8rem; color:var(--rose); font-weight:700; }
+.pbar-bg { height:7px; border-radius:99px; background:var(--blush); overflow:hidden; }
+.pbar-fill { height:100%; border-radius:99px; background:linear-gradient(90deg,var(--rose),var(--gold)); transition:width 0.5s cubic-bezier(.4,0,.2,1); }
+.user-badge { display:inline-flex; align-items:center; gap:6px; background:var(--warm); border:1px solid var(--blush); border-radius:99px; padding:4px 14px; font-size:0.8rem; color:var(--deep); font-weight:600; margin-bottom:12px; }
+.user-badge span { color:var(--rose); }
 
 /* ── QUESTION CARD ── */
-#quizSection { display: none; }
+#quizSection { display:none; }
 .q-card {
-  background: var(--card);
-  border-radius: 24px;
-  padding: 28px 22px 22px;
-  box-shadow: 0 6px 32px var(--shadow);
-  border: 1px solid rgba(193,102,107,0.1);
-  margin-bottom: 16px;
-  animation: slideUp 0.4s cubic-bezier(.4,0,.2,1);
-  position: relative;
-  overflow: hidden;
+  background:var(--card); border-radius:24px; padding:28px 22px 22px;
+  box-shadow:0 6px 32px var(--shadow); border:1px solid rgba(193,102,107,0.1);
+  margin-bottom:16px; animation:slideUp 0.4s cubic-bezier(.4,0,.2,1);
+  position:relative; overflow:hidden;
 }
 @keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-.q-card::before {
-  content: '';
-  position: absolute; top:0;left:0;right:0; height:4px;
-  background: linear-gradient(90deg, var(--rose), var(--gold));
-}
-.q-num {
-  font-size: 0.72rem; font-weight: 700;
-  color: var(--gold); letter-spacing: 2px; text-transform: uppercase;
-  margin-bottom: 10px;
-}
-.q-text {
-  font-family: 'Noto Serif Bengali', serif;
-  font-size: 1.08rem; line-height: 1.7;
-  color: var(--ink); margin-bottom: 8px;
-}
-.q-hint {
-  font-size: 0.78rem; color: var(--muted); margin-bottom: 20px;
-  font-style: italic;
-}
-
-/* SCORE SLIDER */
-.score-slider-wrap { margin-bottom: 6px; }
-.score-track {
-  display: flex; gap: 5px;
-  justify-content: space-between;
-}
+.q-card::before { content:''; position:absolute; top:0;left:0;right:0; height:4px; background:linear-gradient(90deg,var(--rose),var(--gold)); }
+.q-num { font-size:0.72rem; font-weight:700; color:var(--gold); letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+.q-text { font-family:'Noto Serif Bengali',serif; font-size:1.08rem; line-height:1.7; color:var(--ink); margin-bottom:8px; }
+.q-hint { font-size:0.78rem; color:var(--muted); margin-bottom:20px; font-style:italic; }
+.score-slider-wrap { margin-bottom:6px; }
+.score-track { display:flex; gap:5px; justify-content:space-between; }
 .score-btn {
-  flex: 1; padding: 11px 4px;
-  border-radius: 10px;
-  border: 1.5px solid var(--blush);
-  background: var(--warm);
-  color: var(--muted);
-  font-family: 'Hind Siliguri', sans-serif;
-  font-size: 0.85rem; font-weight: 600;
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.18s;
-  line-height: 1;
+  flex:1; padding:11px 4px; border-radius:10px; border:1.5px solid var(--blush);
+  background:var(--warm); color:var(--muted); font-family:'Hind Siliguri',sans-serif;
+  font-size:0.85rem; font-weight:600; cursor:pointer; text-align:center; transition:all 0.18s; line-height:1;
 }
-.score-btn:hover { border-color: var(--rose); color: var(--rose); background: #fdf0ee; }
-.score-btn.sel {
-  background: linear-gradient(135deg, var(--rose), var(--deep));
-  border-color: transparent; color: #fff;
-  transform: scale(1.06);
-  box-shadow: 0 3px 12px rgba(193,102,107,0.35);
-}
-.score-meaning {
-  display: flex; justify-content: space-between;
-  margin-top: 8px; font-size: 0.72rem; color: var(--muted);
-}
-.chosen-label {
-  text-align: center; margin-top: 12px;
-  font-size: 0.85rem; font-weight: 600; color: var(--rose);
-  min-height: 22px; transition: all 0.2s;
-}
+.score-btn:hover { border-color:var(--rose); color:var(--rose); background:#fdf0ee; }
+.score-btn.sel { background:linear-gradient(135deg,var(--rose),var(--deep)); border-color:transparent; color:#fff; transform:scale(1.06); box-shadow:0 3px 12px rgba(193,102,107,0.35); }
+.score-meaning { display:flex; justify-content:space-between; margin-top:8px; font-size:0.72rem; color:var(--muted); }
+.chosen-label { text-align:center; margin-top:12px; font-size:0.85rem; font-weight:600; color:var(--rose); min-height:22px; transition:all 0.2s; }
 
 /* ── RESULT ── */
-#resultSection { display: none; }
-#resultSection.show { display: block; animation: slideUp 0.5s ease; }
-
+#resultSection { display:none; }
+#resultSection.show { display:block; animation:slideUp 0.5s ease; }
 .result-header {
-  background: linear-gradient(135deg, var(--deep), #4a1520);
-  border-radius: 24px; padding: 32px 24px;
-  text-align: center; color: #fff; margin-bottom: 20px;
-  box-shadow: 0 8px 40px rgba(123,45,53,0.4);
-  position: relative; overflow: hidden;
+  background:linear-gradient(135deg,var(--deep),#4a1520); border-radius:24px; padding:32px 24px;
+  text-align:center; color:#fff; margin-bottom:20px;
+  box-shadow:0 8px 40px rgba(123,45,53,0.4); position:relative; overflow:hidden;
 }
-.result-header::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(196,154,60,0.2), transparent 70%);
-}
-.result-name {
-  font-size: 0.82rem; letter-spacing: 2px; color: var(--gold2);
-  text-transform: uppercase; margin-bottom: 6px; position: relative;
-}
-.result-title {
-  font-family: 'Noto Serif Bengali', serif;
-  font-size: 1.4rem; font-weight: 900; margin-bottom: 20px; position: relative;
-}
+.result-header::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 0%, rgba(196,154,60,0.2), transparent 70%); }
+.result-name { font-size:0.82rem; letter-spacing:2px; color:var(--gold2); text-transform:uppercase; margin-bottom:6px; position:relative; }
+.result-title { font-family:'Noto Serif Bengali',serif; font-size:1.4rem; font-weight:900; margin-bottom:20px; position:relative; }
+.big-score-wrap { position:relative; display:inline-block; width:150px; height:150px; margin:0 auto 16px; }
+.big-score-wrap svg { width:150px; height:150px; transform:rotate(-90deg); }
+.big-score-inner { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.big-score-num { font-family:'Noto Serif Bengali',serif; font-size:2.6rem; font-weight:900; color:#fff; line-height:1; }
+.big-score-max { font-size:0.75rem; color:var(--gold2); margin-top:2px; }
+.verdict-pill { display:inline-block; padding:6px 20px; border-radius:99px; font-size:0.95rem; font-weight:700; margin-bottom:10px; position:relative; }
+.v-excellent { background:rgba(52,211,153,0.2); border:1.5px solid #34d399; color:#34d399; }
+.v-good { background:rgba(96,165,250,0.2); border:1.5px solid #60a5fa; color:#93c5fd; }
+.v-average { background:rgba(251,191,36,0.2); border:1.5px solid #fbbf24; color:#fbbf24; }
+.v-poor { background:rgba(248,113,113,0.2); border:1.5px solid #f87171; color:#f87171; }
+.verdict-msg { font-size:0.88rem; color:rgba(255,255,255,0.7); position:relative; line-height:1.6; }
+.breakdown-card { background:var(--card); border-radius:24px; padding:24px 20px; box-shadow:0 4px 24px var(--shadow); border:1px solid rgba(193,102,107,0.1); margin-bottom:16px; }
+.breakdown-card h3 { font-family:'Noto Serif Bengali',serif; font-size:1rem; color:var(--deep); margin-bottom:18px; text-align:center; }
+.bq-row { display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px dashed rgba(193,102,107,0.12); }
+.bq-row:last-child { border:none; }
+.bq-num { width:28px; height:28px; border-radius:50%; background:linear-gradient(135deg,var(--rose),var(--deep)); color:#fff; font-size:0.75rem; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.bq-text { flex:1; font-size:0.82rem; color:var(--muted); line-height:1.4; }
+.bq-score { font-weight:700; font-size:0.95rem; color:var(--rose); min-width:32px; text-align:right; }
+.advice-card { background:linear-gradient(135deg,#fdf0e8,#fdf6ee); border:1px solid var(--blush); border-radius:20px; padding:22px; margin-bottom:20px; }
+.advice-card h3 { font-family:'Noto Serif Bengali',serif; font-size:1rem; color:var(--deep); margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+.advice-card p { font-size:0.88rem; line-height:1.8; color:var(--muted); }
+.disclaimer { text-align:center; font-size:0.73rem; color:var(--muted); opacity:0.6; margin-top:20px; line-height:1.7; }
+.footer-brand { text-align:center; font-size:0.78rem; color:var(--gold); font-weight:600; letter-spacing:1px; margin-top:8px; }
 
-/* BIG SCORE */
-.big-score-wrap {
-  position: relative; display: inline-block;
-  width: 150px; height: 150px; margin: 0 auto 16px;
+/* ── LOGOUT BAR ── */
+.top-bar {
+  display:none; max-width:620px; margin:0 auto 12px; padding:0 16px;
+  align-items:center; justify-content:space-between; gap:8px;
 }
-.big-score-wrap svg { width: 150px; height: 150px; transform: rotate(-90deg); }
-.big-score-inner {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-}
-.big-score-num {
-  font-family: 'Noto Serif Bengali', serif;
-  font-size: 2.6rem; font-weight: 900; color: #fff; line-height: 1;
-}
-.big-score-max { font-size: 0.75rem; color: var(--gold2); margin-top: 2px; }
+.top-bar.visible { display:flex; }
+.top-bar-info { font-size:0.8rem; color:var(--muted); }
+.top-bar-info strong { color:var(--deep); }
 
-.verdict-pill {
-  display: inline-block; padding: 6px 20px; border-radius: 99px;
-  font-size: 0.95rem; font-weight: 700; margin-bottom: 10px; position: relative;
+/* ── ADMIN PANEL ── */
+#adminSection { display:none; }
+.admin-header {
+  background:linear-gradient(135deg,#1a0a0d,#4a1520); border-radius:24px; padding:24px;
+  margin-bottom:20px; text-align:center; position:relative; overflow:hidden;
 }
-.v-excellent { background: rgba(52,211,153,0.2); border: 1.5px solid #34d399; color: #34d399; }
-.v-good      { background: rgba(96,165,250,0.2); border: 1.5px solid #60a5fa; color: #93c5fd; }
-.v-average   { background: rgba(251,191,36,0.2); border: 1.5px solid #fbbf24; color: #fbbf24; }
-.v-poor      { background: rgba(248,113,113,0.2); border: 1.5px solid #f87171; color: #f87171; }
+.admin-header::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 0%,rgba(196,154,60,0.15),transparent 70%); }
+.admin-header h2 { font-family:'Noto Serif Bengali',serif; color:#fff; font-size:1.4rem; position:relative; margin-bottom:4px; }
+.admin-header p { font-size:0.8rem; color:var(--gold2); position:relative; }
 
-.verdict-msg { font-size: 0.88rem; color: rgba(255,255,255,0.7); position: relative; line-height: 1.6; }
+.stats-row { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:20px; }
+.stat-box { background:var(--card); border-radius:16px; padding:16px 12px; text-align:center; box-shadow:0 2px 12px var(--shadow); border:1px solid rgba(193,102,107,0.1); }
+.stat-num { font-family:'Noto Serif Bengali',serif; font-size:1.8rem; font-weight:900; color:var(--deep); line-height:1; }
+.stat-lbl { font-size:0.72rem; color:var(--muted); margin-top:4px; }
 
-/* Q BREAKDOWN */
-.breakdown-card {
-  background: var(--card);
-  border-radius: 24px; padding: 24px 20px;
-  box-shadow: 0 4px 24px var(--shadow);
-  border: 1px solid rgba(193,102,107,0.1);
-  margin-bottom: 16px;
-}
-.breakdown-card h3 {
-  font-family: 'Noto Serif Bengali', serif;
-  font-size: 1rem; color: var(--deep);
-  margin-bottom: 18px; text-align: center;
-}
-.bq-row {
-  display: flex; align-items: center; gap: 10px;
-  padding: 8px 0;
-  border-bottom: 1px dashed rgba(193,102,107,0.12);
-}
-.bq-row:last-child { border: none; }
-.bq-num {
-  width: 28px; height: 28px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--rose), var(--deep));
-  color: #fff; font-size: 0.75rem; font-weight: 700;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.bq-text { flex: 1; font-size: 0.82rem; color: var(--muted); line-height: 1.4; }
-.bq-score {
-  font-weight: 700; font-size: 0.95rem; color: var(--rose); min-width: 32px; text-align: right;
-}
+.filter-bar { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
+.filter-btn { padding:7px 14px; border-radius:10px; border:1.5px solid var(--blush); background:transparent; font-family:'Hind Siliguri',sans-serif; font-size:0.8rem; color:var(--muted); cursor:pointer; transition:all 0.2s; }
+.filter-btn.active { background:linear-gradient(135deg,var(--rose),var(--deep)); border-color:transparent; color:#fff; }
 
-/* ADVICE */
-.advice-card {
-  background: linear-gradient(135deg, #fdf0e8, #fdf6ee);
-  border: 1px solid var(--blush);
-  border-radius: 20px; padding: 22px;
-  margin-bottom: 20px;
+.submissions-card { background:var(--card); border-radius:24px; padding:20px; box-shadow:0 4px 24px var(--shadow); border:1px solid rgba(193,102,107,0.1); margin-bottom:20px; }
+.submissions-card h3 { font-family:'Noto Serif Bengali',serif; font-size:1rem; color:var(--deep); margin-bottom:16px; }
+.sub-item {
+  border:1px solid rgba(193,102,107,0.12); border-radius:16px; padding:16px;
+  margin-bottom:12px; cursor:pointer; transition:all 0.2s;
+  background:var(--warm);
 }
-.advice-card h3 {
-  font-family: 'Noto Serif Bengali', serif;
-  font-size: 1rem; color: var(--deep); margin-bottom: 10px;
-  display: flex; align-items: center; gap: 8px;
-}
-.advice-card p { font-size: 0.88rem; line-height: 1.8; color: var(--muted); }
+.sub-item:hover { border-color:var(--rose); box-shadow:0 2px 12px var(--shadow); }
+.sub-item:last-child { margin-bottom:0; }
+.sub-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+.sub-name { font-family:'Noto Serif Bengali',serif; font-weight:700; color:var(--deep); font-size:0.95rem; }
+.sub-role { font-size:0.75rem; color:var(--muted); background:var(--blush); padding:2px 10px; border-radius:99px; }
+.sub-score-row { display:flex; align-items:center; gap:8px; }
+.sub-score-bar-bg { flex:1; height:6px; border-radius:99px; background:#e8c4b8; overflow:hidden; }
+.sub-score-bar { height:100%; border-radius:99px; background:linear-gradient(90deg,var(--rose),var(--gold)); }
+.sub-score-num { font-size:0.82rem; font-weight:700; color:var(--rose); min-width:40px; text-align:right; }
+.sub-date { font-size:0.7rem; color:var(--muted); margin-top:6px; }
+.empty-state { text-align:center; padding:40px 20px; color:var(--muted); font-size:0.88rem; line-height:1.8; }
 
-.disclaimer {
-  text-align: center; font-size: 0.73rem;
-  color: var(--muted); opacity: 0.6;
-  margin-top: 20px; line-height: 1.7;
+/* MODAL */
+.modal-overlay {
+  display:none; position:fixed; inset:0;
+  background:rgba(44,24,16,0.7); z-index:1000;
+  align-items:center; justify-content:center; padding:16px;
 }
-.footer-brand {
-  text-align: center; font-size: 0.78rem;
-  color: var(--gold); font-weight: 600;
-  letter-spacing: 1px; margin-top: 8px;
+.modal-overlay.open { display:flex; }
+.modal-box {
+  background:var(--cream); border-radius:24px; padding:28px 22px;
+  max-width:540px; width:100%; max-height:90vh; overflow-y:auto;
+  box-shadow:0 20px 60px rgba(0,0,0,0.3); animation:slideUp 0.3s ease;
 }
+.modal-box h2 { font-family:'Noto Serif Bengali',serif; color:var(--deep); font-size:1.15rem; margin-bottom:16px; text-align:center; }
+.modal-result-header {
+  background:linear-gradient(135deg,var(--deep),#4a1520); border-radius:16px;
+  padding:20px; text-align:center; color:#fff; margin-bottom:16px;
+  position:relative; overflow:hidden;
+}
+.modal-result-header::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 0%,rgba(196,154,60,0.2),transparent 70%); }
+.modal-score-big { font-family:'Noto Serif Bengali',serif; font-size:3rem; font-weight:900; color:#fff; position:relative; }
+.modal-score-label { font-size:0.8rem; color:var(--gold2); position:relative; }
+.modal-close { width:100%; padding:12px; border-radius:12px; border:1.5px solid var(--blush); background:transparent; color:var(--muted); font-family:'Hind Siliguri',sans-serif; font-size:0.9rem; cursor:pointer; margin-top:16px; transition:all 0.2s; }
+.modal-close:hover { border-color:var(--rose); color:var(--rose); }
+
+/* AVG CHART */
+.avg-chart { display:flex; flex-direction:column; gap:8px; margin-top:8px; }
+.avg-row { display:flex; align-items:center; gap:8px; }
+.avg-label { font-size:0.72rem; color:var(--muted); min-width:90px; text-align:right; }
+.avg-bar-bg { flex:1; height:8px; border-radius:99px; background:var(--blush); overflow:hidden; }
+.avg-bar { height:100%; border-radius:99px; background:linear-gradient(90deg,var(--rose),var(--gold)); }
+.avg-val { font-size:0.72rem; font-weight:700; color:var(--rose); min-width:28px; }
+
+@media(max-width:400px){ .stats-row{grid-template-columns:1fr 1fr;} }
 </style>
 </head>
 <body>
@@ -411,41 +312,79 @@ header {
   <p class="subtitle">দাম্পত্য জীবনের সামগ্রিক মূল্যায়ন পদ্ধতি</p>
 </header>
 
+<!-- TOP BAR (logout) -->
+<div class="top-bar" id="topBar">
+  <div class="top-bar-info">স্বাগতম, <strong id="topBarName">—</strong></div>
+  <button class="btn-sm ghost" onclick="logout()">লগআউট ↩</button>
+</div>
+
 <div class="wrap">
 
-<!-- ══ INTRO ══ -->
-<div id="introSection">
+<!-- ══ LOGIN ══ -->
+<div id="loginSection">
   <div class="ornament">— ❧ —</div><br>
-  <div class="intro-card">
-    <h2>এই মূল্যায়নে কী আছে?</h2>
-    <p>দাম্পত্য জীবনের ১০টি গুরুত্বপূর্ণ দিক নিয়ে প্রশ্ন রয়েছে। প্রতিটি প্রশ্নে ১০ এর মধ্যে নিজে যত নম্বর উপযুক্ত মনে করেন দিন। মোট ১০০ নম্বরের মধ্যে আপনার সঙ্গী মূল্যায়িত হবেন।</p>
-    <div class="q-chips">
-      <span class="q-chip">💬 যোগাযোগ</span>
-      <span class="q-chip">💖 ভালোবাসা</span>
-      <span class="q-chip">🤝 বিশ্বাস</span>
-      <span class="q-chip">🏠 সংসার</span>
-      <span class="q-chip">👨‍👩‍👧 পরিবার</span>
-      <span class="q-chip">💰 অর্থনীতি</span>
-      <span class="q-chip">🧠 মানসিক সমর্থন</span>
-      <span class="q-chip">⚖️ সম্মান</span>
-      <span class="q-chip">🌱 ব্যক্তিগত উন্নয়ন</span>
-      <span class="q-chip">🛐 ধর্ম ও নৈতিকতা</span>
+  <div class="login-card">
+    <h2>প্রবেশ করুন</h2>
+    <div class="login-tabs">
+      <button class="login-tab active" id="tabUser" onclick="switchTab('user')">👤 ব্যবহারকারী</button>
+      <button class="login-tab" id="tabAdmin" onclick="switchTab('admin')">🔐 অ্যাডমিন</button>
+    </div>
+
+    <div id="userLoginForm">
+      <div class="field-group">
+        <label>আপনার নাম</label>
+        <input type="text" id="loginName" placeholder="নাম লিখুন" />
+      </div>
+      <div class="field-group">
+        <label>আপনি কে?</label>
+        <select id="loginRole">
+          <option value="">বেছে নিন</option>
+          <option value="স্বামী">স্বামী (স্ত্রীকে মূল্যায়ন করব)</option>
+          <option value="স্ত্রী">স্ত্রী (স্বামীকে মূল্যায়ন করব)</option>
+        </select>
+      </div>
+      <div class="error-msg" id="userError"></div>
+      <button class="btn-main" onclick="loginUser()" style="margin-top:8px;">প্রবেশ করুন →</button>
+    </div>
+
+    <div id="adminLoginForm" style="display:none;">
+      <div class="field-group">
+        <label>অ্যাডমিন পাসওয়ার্ড</label>
+        <input type="password" id="adminPass" placeholder="অ্যাডমিন পাসওয়ার্ড" />
+      </div>
+      <div class="error-msg" id="adminError"></div>
+      <button class="btn-main" onclick="loginAdmin()" style="margin-top:8px;">অ্যাডমিন প্যানেল →</button>
     </div>
   </div>
 
-  <div class="name-card">
-    <label>আপনার তথ্য দিন</label>
-    <div class="name-inputs">
-      <input type="text" id="userName" placeholder="আপনার নাম লিখুন" />
-      <select id="userRole">
-        <option value="">আপনি কে? বেছে নিন</option>
-        <option value="স্বামী">স্বামী (স্ত্রীকে মূল্যায়ন করব)</option>
-        <option value="স্ত্রী">স্ত্রী (স্বামীকে মূল্যায়ন করব)</option>
-      </select>
+</div>
+
+<!-- ══ INTRO (user) ══ -->
+<div id="introSection">
+  <div id="alreadyDoneBox" style="display:none">
+    <div class="already-done-card">
+      <h3>✅ আপনি ইতিমধ্যে মূল্যায়ন করেছেন</h3>
+      <p>আপনার উত্তর সংরক্ষিত আছে। নিচে আপনার ফলাফল দেখুন।</p>
+      <br>
+      <button class="btn-main" onclick="viewOwnResult()">আমার ফলাফল দেখুন →</button>
+      <button class="btn-ghost" onclick="redoQuiz()">পুনরায় মূল্যায়ন করুন</button>
     </div>
   </div>
-
-  <button class="btn-main" onclick="startQuiz()">মূল্যায়ন শুরু করুন →</button>
+  <div id="freshIntroBox">
+    <div class="ornament">— ❧ —</div><br>
+    <div class="intro-card">
+      <h2>এই মূল্যায়নে কী আছে?</h2>
+      <p>দাম্পত্য জীবনের ১০টি গুরুত্বপূর্ণ দিক নিয়ে প্রশ্ন রয়েছে। প্রতিটি প্রশ্নে ১০ এর মধ্যে নিজে যত নম্বর উপযুক্ত মনে করেন দিন।</p>
+      <div class="q-chips">
+        <span class="q-chip">💬 যোগাযোগ</span><span class="q-chip">💖 ভালোবাসা</span>
+        <span class="q-chip">🤝 বিশ্বাস</span><span class="q-chip">🏠 সংসার</span>
+        <span class="q-chip">👨‍👩‍👧 পরিবার</span><span class="q-chip">💰 অর্থনীতি</span>
+        <span class="q-chip">🧠 মানসিক সমর্থন</span><span class="q-chip">⚖️ সম্মান</span>
+        <span class="q-chip">🌱 ব্যক্তিগত উন্নয়ন</span><span class="q-chip">🛐 ধর্ম ও নৈতিকতা</span>
+      </div>
+    </div>
+    <button class="btn-main" onclick="startQuiz()">মূল্যায়ন শুরু করুন →</button>
+  </div>
 </div>
 
 <!-- ══ QUIZ ══ -->
@@ -458,7 +397,6 @@ header {
     </div>
     <div class="pbar-bg"><div class="pbar-fill" id="pFill" style="width:0%"></div></div>
   </div>
-
   <div id="qArea"></div>
   <button class="btn-main" id="nextBtn" onclick="nextQ()" disabled>পরবর্তী প্রশ্ন →</button>
 </div>
@@ -489,247 +427,462 @@ header {
     <div id="vPill"></div>
     <div class="verdict-msg" id="vMsg"></div>
   </div>
-
   <div class="breakdown-card">
     <h3>প্রশ্নভিত্তিক বিশ্লেষণ</h3>
     <div id="bqList"></div>
   </div>
-
   <div class="advice-card" id="adviceCard">
     <h3><span>💡</span> পরামর্শ ও পর্যবেক্ষণ</h3>
     <p id="adviceText"></p>
   </div>
-
-  <button class="btn-main" onclick="restart()">🔄 আবার মূল্যায়ন করুন</button>
   <button class="btn-ghost" onclick="printResult()">🖨️ ফলাফল প্রিন্ট করুন</button>
-
   <p class="disclaimer">এই মূল্যায়ন শুধুমাত্র আত্মসচেতনতা ও পারস্পরিক বোঝাপড়ার জন্য।<br>জটিল সম্পর্কে পেশাদার কাউন্সেলরের পরামর্শ নেওয়া উচিত।</p>
   <div class="footer-brand">✦ Dashing Family ✦</div>
 </div>
 
+<!-- ══ ADMIN PANEL ══ -->
+<div id="adminSection">
+  <div class="admin-header">
+    <h2>🔐 অ্যাডমিন প্যানেল</h2>
+    <p>সকল মূল্যায়নের তথ্য ও বিশ্লেষণ</p>
+  </div>
+
+  <div class="stats-row" id="statsRow">
+    <div class="stat-box"><div class="stat-num" id="statTotal">০</div><div class="stat-lbl">মোট মূল্যায়ন</div></div>
+    <div class="stat-box"><div class="stat-num" id="statAvg">০</div><div class="stat-lbl">গড় নম্বর</div></div>
+    <div class="stat-box"><div class="stat-num" id="statHigh">০</div><div class="stat-lbl">সর্বোচ্চ</div></div>
+  </div>
+
+  <!-- avg by topic -->
+  <div class="submissions-card" id="avgCard" style="display:none">
+    <h3>📊 বিষয়ভিত্তিক গড় নম্বর</h3>
+    <div class="avg-chart" id="avgChart"></div>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterSubs('all',this)">সবাই</button>
+    <button class="filter-btn" onclick="filterSubs('স্বামী',this)">স্বামী</button>
+    <button class="filter-btn" onclick="filterSubs('স্ত্রী',this)">স্ত্রী</button>
+  </div>
+
+  <div class="submissions-card">
+    <h3>📋 জমা দেওয়া মূল্যায়ন</h3>
+    <div id="subsList"></div>
+  </div>
+</div>
+
 </div><!-- /wrap -->
 
+<!-- DETAIL MODAL -->
+<div class="modal-overlay" id="detailModal" onclick="closeModal(event)">
+  <div class="modal-box">
+    <h2 id="modalTitle">মূল্যায়ন বিবরণ</h2>
+    <div class="modal-result-header">
+      <div class="modal-score-big" id="modalScore">—</div>
+      <div class="modal-score-label">/ ১০০</div>
+      <div id="modalVerdict" style="margin-top:8px;position:relative;"></div>
+    </div>
+    <div id="modalBreakdown"></div>
+    <button class="modal-close" onclick="document.getElementById('detailModal').classList.remove('open')">✕ বন্ধ করুন</button>
+  </div>
+</div>
+
 <script>
+// ══════════════════════════════════
+//  CONFIG
+// ══════════════════════════════════
+const ADMIN_PASS = 'admin2024';
+const STORAGE_KEY = 'df_submissions_v2';
+const SESSION_KEY = 'df_session_v2';
+
+// ══════════════════════════════════
+//  QUESTIONS
+// ══════════════════════════════════
 const questions = [
-  {
-    num: 1,
-    topic: '💬 যোগাযোগ ও কথোপকথন',
-    q: 'আপনার সঙ্গী কি মনোযোগ দিয়ে শোনেন এবং মনের কথা খোলামেলাভাবে বলতে পারেন?',
-    hint: 'যেমন: ঝগড়া হলে আলোচনা করে সমাধান, অনুভূতি ভাগ করে নেওয়া, কথা শুনে সাড়া দেওয়া',
-    meanings: ['খুবই দুর্বল', 'চমৎকার'],
-  },
-  {
-    num: 2,
-    topic: '💖 ভালোবাসা ও আবেগ',
-    q: 'সঙ্গী কি ভালোবাসা, যত্ন ও আবেগের প্রকাশ নিয়মিত করেন?',
-    hint: 'যেমন: ছোট ছোট মনোযোগ, সহানুভূতি, কঠিন সময়ে পাশে থাকা, কৃতজ্ঞতা প্রকাশ',
-    meanings: ['খুবই দুর্বল', 'চমৎকার'],
-  },
-  {
-    num: 3,
-    topic: '🤝 বিশ্বাস ও সততা',
-    q: 'আপনার সঙ্গী কি সম্পূর্ণ বিশ্বস্ত এবং সৎ? কথা ও কাজে মিল আছে?',
-    hint: 'যেমন: প্রতিশ্রুতি রাখা, লুকিয়ে কিছু না করা, স্বচ্ছতা বজায় রাখা',
-    meanings: ['একদমই না', 'সম্পূর্ণ বিশ্বস্ত'],
-  },
-  {
-    num: 4,
-    topic: '🏠 সংসার ও গৃহস্থালি',
-    q: 'ঘরের কাজ, রান্না, সন্তান পালন ও সংসারের দায়িত্বে কি সঠিক অংশগ্রহণ করেন?',
-    hint: 'যেমন: ঘরের কাজে সহযোগিতা, সন্তানের পড়া-যত্ন, বাজার-রান্নায় সাহায্য',
-    meanings: ['কোনো সহযোগিতা নেই', 'সম্পূর্ণ সহযোগী'],
-  },
-  {
-    num: 5,
-    topic: '👨‍👩‍👧 পরিবার ও আত্মীয়তা',
-    q: 'আপনার পরিবার ও আত্মীয়দের সাথে সঙ্গীর ব্যবহার ও সম্পর্ক কেমন?',
-    hint: 'যেমন: মা-বাবার সাথে সদাচার, আত্মীয়দের সম্মান, পারিবারিক অনুষ্ঠানে উপস্থিতি',
-    meanings: ['খুবই খারাপ', 'অত্যন্ত ভালো'],
-  },
-  {
-    num: 6,
-    topic: '💰 আর্থিক দায়িত্ব ও পরিকল্পনা',
-    q: 'পরিবারের আর্থিক বিষয়ে সঙ্গী কতটা দায়িত্বশীল এবং পরিকল্পিত?',
-    hint: 'যেমন: খরচ নিয়ন্ত্রণ, ভবিষ্যতের সঞ্চয়, ঋণ পরিশোধ, সংসারের চাহিদা পূরণ',
-    meanings: ['সম্পূর্ণ দায়িত্বহীন', 'অত্যন্ত দায়িত্বশীল'],
-  },
-  {
-    num: 7,
-    topic: '🧠 মানসিক সমর্থন ও বোঝাপড়া',
-    q: 'মানসিক চাপ, দুঃখ বা কষ্টের সময়ে সঙ্গী কি পাশে থাকেন এবং বোঝেন?',
-    hint: 'যেমন: মন খারাপ হলে সাথে থাকা, সমস্যায় উপদেশ দেওয়া, রাগ না করে শোনা',
-    meanings: ['একদমই না', 'সবসময় পাশে থাকেন'],
-  },
-  {
-    num: 8,
-    topic: '⚖️ সম্মান ও মর্যাদা',
-    q: 'আপনার সঙ্গী কি আপনাকে সমান মর্যাদা, সম্মান ও স্বাধীনতা দেন?',
-    hint: 'যেমন: মতামতকে গুরুত্ব দেওয়া, অপমান না করা, সিদ্ধান্তে অংশীদার করা',
-    meanings: ['মোটেও না', 'পূর্ণ সম্মান'],
-  },
-  {
-    num: 9,
-    topic: '🌱 ব্যক্তিগত উন্নয়ন ও লক্ষ্য',
-    q: 'আপনার স্বপ্ন, ক্যারিয়ার ও ব্যক্তিগত উন্নয়নে সঙ্গী কি সহায়তা করেন?',
-    hint: 'যেমন: পড়াশোনা বা কাজে উৎসাহ দেওয়া, শখকে সম্মান করা, নতুন কিছু শিখতে সাহায্য করা',
-    meanings: ['কোনো সহায়তা নেই', 'সম্পূর্ণ সহায়তা'],
-  },
-  {
-    num: 10,
-    topic: '🛐 ধর্ম, নৈতিকতা ও চরিত্র',
-    q: 'সঙ্গীর ধর্মীয় মূল্যবোধ, নৈতিকতা ও চরিত্র সম্পর্কে আপনি কতটা সন্তুষ্ট?',
-    hint: 'যেমন: নামাজ/ইবাদত, সত্যবাদিতা, ন্যায়পরায়ণতা, মানুষের সাথে ভালো আচরণ',
-    meanings: ['মোটেও সন্তুষ্ট নই', 'সম্পূর্ণ সন্তুষ্ট'],
-  },
+  { num:1,  topic:'💬 যোগাযোগ ও কথোপকথন',      q:'আপনার সঙ্গী কি মনোযোগ দিয়ে শোনেন এবং মনের কথা খোলামেলাভাবে বলতে পারেন?', hint:'যেমন: ঝগড়া হলে আলোচনা করে সমাধান, অনুভূতি ভাগ করে নেওয়া', meanings:['খুবই দুর্বল','চমৎকার'] },
+  { num:2,  topic:'💖 ভালোবাসা ও আবেগ',          q:'সঙ্গী কি ভালোবাসা, যত্ন ও আবেগের প্রকাশ নিয়মিত করেন?', hint:'যেমন: ছোট ছোট মনোযোগ, সহানুভূতি, কঠিন সময়ে পাশে থাকা', meanings:['খুবই দুর্বল','চমৎকার'] },
+  { num:3,  topic:'🤝 বিশ্বাস ও সততা',           q:'আপনার সঙ্গী কি সম্পূর্ণ বিশ্বস্ত এবং সৎ? কথা ও কাজে মিল আছে?', hint:'যেমন: প্রতিশ্রুতি রাখা, লুকিয়ে কিছু না করা, স্বচ্ছতা বজায় রাখা', meanings:['একদমই না','সম্পূর্ণ বিশ্বস্ত'] },
+  { num:4,  topic:'🏠 সংসার ও গৃহস্থালি',         q:'ঘরের কাজ, রান্না, সন্তান পালন ও সংসারের দায়িত্বে কি সঠিক অংশগ্রহণ করেন?', hint:'যেমন: ঘরের কাজে সহযোগিতা, সন্তানের পড়া-যত্ন, বাজার-রান্নায় সাহায্য', meanings:['কোনো সহযোগিতা নেই','সম্পূর্ণ সহযোগী'] },
+  { num:5,  topic:'👨‍👩‍👧 পরিবার ও আত্মীয়তা',       q:'আপনার পরিবার ও আত্মীয়দের সাথে সঙ্গীর ব্যবহার ও সম্পর্ক কেমন?', hint:'যেমন: মা-বাবার সাথে সদাচার, আত্মীয়দের সম্মান, পারিবারিক অনুষ্ঠানে উপস্থিতি', meanings:['খুবই খারাপ','অত্যন্ত ভালো'] },
+  { num:6,  topic:'💰 আর্থিক দায়িত্ব ও পরিকল্পনা', q:'পরিবারের আর্থিক বিষয়ে সঙ্গী কতটা দায়িত্বশীল এবং পরিকল্পিত?', hint:'যেমন: খরচ নিয়ন্ত্রণ, ভবিষ্যতের সঞ্চয়, ঋণ পরিশোধ, সংসারের চাহিদা পূরণ', meanings:['সম্পূর্ণ দায়িত্বহীন','অত্যন্ত দায়িত্বশীল'] },
+  { num:7,  topic:'🧠 মানসিক সমর্থন ও বোঝাপড়া',  q:'মানসিক চাপ, দুঃখ বা কষ্টের সময়ে সঙ্গী কি পাশে থাকেন এবং বোঝেন?', hint:'যেমন: মন খারাপ হলে সাথে থাকা, সমস্যায় উপদেশ দেওয়া, রাগ না করে শোনা', meanings:['একদমই না','সবসময় পাশে থাকেন'] },
+  { num:8,  topic:'⚖️ সম্মান ও মর্যাদা',           q:'আপনার সঙ্গী কি আপনাকে সমান মর্যাদা, সম্মান ও স্বাধীনতা দেন?', hint:'যেমন: মতামতকে গুরুত্ব দেওয়া, অপমান না করা, সিদ্ধান্তে অংশীদার করা', meanings:['মোটেও না','পূর্ণ সম্মান'] },
+  { num:9,  topic:'🌱 ব্যক্তিগত উন্নয়ন ও লক্ষ্য', q:'আপনার স্বপ্ন, ক্যারিয়ার ও ব্যক্তিগত উন্নয়নে সঙ্গী কি সহায়তা করেন?', hint:'যেমন: পড়াশোনা বা কাজে উৎসাহ দেওয়া, শখকে সম্মান করা, নতুন কিছু শিখতে সাহায্য করা', meanings:['কোনো সহায়তা নেই','সম্পূর্ণ সহায়তা'] },
+  { num:10, topic:'🛐 ধর্ম, নৈতিকতা ও চরিত্র',    q:'সঙ্গীর ধর্মীয় মূল্যবোধ, নৈতিকতা ও চরিত্র সম্পর্কে আপনি কতটা সন্তুষ্ট?', hint:'যেমন: নামাজ/ইবাদত, সত্যবাদিতা, ন্যায়পরায়ণতা, মানুষের সাথে ভালো আচরণ', meanings:['মোটেও সন্তুষ্ট নই','সম্পূর্ণ সন্তুষ্ট'] },
+];
+const scoreLabels = { 1:'একদমই না', 2:'খুব খারাপ', 3:'খারাপ', 4:'মোটামুটি কম', 5:'মাঝামাঝি', 6:'মোটামুটি ভালো', 7:'ভালো', 8:'বেশ ভালো', 9:'খুব ভালো', 10:'চমৎকার!' };
+const advices = [
+  'যোগাযোগ উন্নত করতে প্রতিদিন অন্তত ১৫ মিনিট শুধু একে অপরকে শুনুন।',
+  'ছোট ছোট মনোযোগ ও প্রশংসা ভালোবাসা টিকিয়ে রাখতে সাহায্য করে।',
+  'বিশ্বাস হারালে সম্পর্ক ভেঙে পড়ে। সব ক্ষেত্রে স্বচ্ছতা রাখুন।',
+  'সংসারের কাজে সমান অংশীদারিত্ব দাম্পত্যকে সুখী রাখে।',
+  'পারিবারিক সম্পর্ক টিকিয়ে রাখতে একে অপরের পরিবারকে শ্রদ্ধা করুন।',
+  'আর্থিক পরিকল্পনা একসাথে করুন। মাসিক বাজেট তৈরি করুন।',
+  'মানসিক সমর্থন দেওয়া মানে সমাধান দেওয়া নয়, শুধু পাশে থাকা।',
+  'সম্মান সম্পর্কের ভিত্তি। কখনো সবার সামনে অপমান করবেন না।',
+  'একে অপরের স্বপ্নকে সমর্থন করুন। সঙ্গীর ক্যারিয়ারে উৎসাহ দিন।',
+  'ধর্মীয় ও নৈতিক মূল্যবোধ একসাথে চর্চা করুন।',
 ];
 
-const scoreLabels = {
-  1: 'একদমই না',
-  2: 'খুব খারাপ',
-  3: 'খারাপ',
-  4: 'মোটামুটি কম',
-  5: 'মাঝামাঝি',
-  6: 'মোটামুটি ভালো',
-  7: 'ভালো',
-  8: 'বেশ ভালো',
-  9: 'খুব ভালো',
-  10: 'চমৎকার!',
-};
+// ══════════════════════════════════
+//  STORAGE HELPERS
+// ══════════════════════════════════
+function getSubmissions() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch(e){ return []; }
+}
+function saveSubmissions(arr) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+}
+function getSession() {
+  try { return JSON.parse(sessionStorage.getItem(SESSION_KEY) || 'null'); } catch(e){ return null; }
+}
+function setSession(obj) { sessionStorage.setItem(SESSION_KEY, JSON.stringify(obj)); }
+function clearSession() { sessionStorage.removeItem(SESSION_KEY); }
 
-let cur = 0;
-let answers = [];
-let uName = '', uRole = '';
+function makeUserId(name, role) {
+  return (name.trim().toLowerCase() + '_' + role).replace(/\s+/g,'_');
+}
 
+function findSubmission(name, role) {
+  const id = makeUserId(name, role);
+  const subs = getSubmissions();
+  return subs.find(s => s.id === id) || null;
+}
+
+// ══════════════════════════════════
+//  QUIZ STATE
+// ══════════════════════════════════
+let cur = 0, answers = [], uName = '', uRole = '';
+
+// ══════════════════════════════════
+//  LOGIN
+// ══════════════════════════════════
+function switchTab(t) {
+  document.getElementById('tabUser').classList.toggle('active', t==='user');
+  document.getElementById('tabAdmin').classList.toggle('active', t==='admin');
+  document.getElementById('userLoginForm').style.display = t==='user' ? 'block' : 'none';
+  document.getElementById('adminLoginForm').style.display = t==='admin' ? 'block' : 'none';
+}
+
+function loginUser() {
+  const name = document.getElementById('loginName').value.trim();
+  const role = document.getElementById('loginRole').value;
+  document.getElementById('userError').textContent = '';
+  if (!name) { document.getElementById('userError').textContent = 'নাম লিখুন।'; return; }
+  if (!role) { document.getElementById('userError').textContent = 'ভূমিকা বেছে নিন।'; return; }
+  uName = name; uRole = role;
+  setSession({ type:'user', name, role });
+  showUserSection();
+}
+
+function loginAdmin() {
+  const pass = document.getElementById('adminPass').value;
+  document.getElementById('adminError').textContent = '';
+  if (pass !== ADMIN_PASS) { document.getElementById('adminError').textContent = 'পাসওয়ার্ড ভুল।'; return; }
+  setSession({ type:'admin' });
+  showAdminSection();
+}
+
+function logout() {
+  clearSession();
+  cur=0; answers=[]; uName=''; uRole='';
+  document.getElementById('loginSection').style.display='block';
+  document.getElementById('introSection').style.display='none';
+  document.getElementById('quizSection').style.display='none';
+  document.getElementById('resultSection').style.display='none';
+  document.getElementById('adminSection').style.display='none';
+  document.getElementById('topBar').classList.remove('visible');
+  document.getElementById('loginName').value='';
+  document.getElementById('loginPass').value='';
+  document.getElementById('loginRole').value='';
+  document.getElementById('adminPass').value='';
+}
+
+// ══════════════════════════════════
+//  SHOW SECTIONS
+// ══════════════════════════════════
+function showUserSection() {
+  document.getElementById('loginSection').style.display='none';
+  document.getElementById('adminSection').style.display='none';
+  document.getElementById('quizSection').style.display='none';
+  document.getElementById('resultSection').style.display='none';
+
+  document.getElementById('topBar').classList.add('visible');
+  document.getElementById('topBarName').textContent = uName + ' (' + uRole + ')';
+
+  const existing = findSubmission(uName, uRole);
+  document.getElementById('introSection').style.display='block';
+  if (existing) {
+    document.getElementById('alreadyDoneBox').style.display='block';
+    document.getElementById('freshIntroBox').style.display='none';
+  } else {
+    document.getElementById('alreadyDoneBox').style.display='none';
+    document.getElementById('freshIntroBox').style.display='block';
+  }
+}
+
+function showAdminSection() {
+  document.getElementById('loginSection').style.display='none';
+  document.getElementById('introSection').style.display='none';
+  document.getElementById('quizSection').style.display='none';
+  document.getElementById('resultSection').style.display='none';
+  document.getElementById('adminSection').style.display='block';
+  document.getElementById('topBar').classList.add('visible');
+  document.getElementById('topBarName').textContent='অ্যাডমিন';
+  renderAdmin('all');
+}
+
+// ══════════════════════════════════
+//  QUIZ
+// ══════════════════════════════════
 function startQuiz() {
-  uName = document.getElementById('userName').value.trim();
-  uRole = document.getElementById('userRole').value;
-  if (!uName) { alert('অনুগ্রহ করে আপনার নাম লিখুন।'); return; }
-  if (!uRole) { alert('অনুগ্রহ করে আপনার পরিচয় বেছে নিন।'); return; }
-  document.getElementById('introSection').style.display = 'none';
-  document.getElementById('quizSection').style.display = 'block';
+  cur=0; answers=[];
+  document.getElementById('introSection').style.display='none';
+  document.getElementById('quizSection').style.display='block';
   document.getElementById('badgeName').textContent = uName + ' (' + uRole + ')';
   renderQ();
 }
 
+function redoQuiz() {
+  // remove existing submission then start fresh
+  const id = makeUserId(uName, uRole);
+  let subs = getSubmissions();
+  subs = subs.filter(s => s.id !== id);
+  saveSubmissions(subs);
+  cur=0; answers=[];
+  document.getElementById('alreadyDoneBox').style.display='none';
+  document.getElementById('freshIntroBox').style.display='block';
+}
+
+function viewOwnResult() {
+  const existing = findSubmission(uName, uRole);
+  if (!existing) return;
+  answers = existing.answers;
+  document.getElementById('introSection').style.display='none';
+  displayResult(existing.answers, uName, uRole);
+}
+
 function renderQ() {
   const q = questions[cur];
-  const pct = Math.round((cur / questions.length) * 100);
-  document.getElementById('pLabel').textContent = `প্রশ্ন ${cur + 1} / ${questions.length}`;
-  document.getElementById('pPct').textContent = pct + '%';
-  document.getElementById('pFill').style.width = pct + '%';
-  document.getElementById('nextBtn').disabled = answers[cur] === undefined;
-
-  let btnHtml = '';
-  for (let i = 1; i <= 10; i++) {
-    btnHtml += `<button class="score-btn ${answers[cur] === i ? 'sel' : ''}" onclick="pickScore(${i})">${i}</button>`;
+  const pct = Math.round((cur/questions.length)*100);
+  document.getElementById('pLabel').textContent = `প্রশ্ন ${cur+1} / ${questions.length}`;
+  document.getElementById('pPct').textContent = pct+'%';
+  document.getElementById('pFill').style.width = pct+'%';
+  document.getElementById('nextBtn').disabled = answers[cur]===undefined;
+  let btnHtml='';
+  for(let i=1;i<=10;i++){
+    btnHtml+=`<button class="score-btn ${answers[cur]===i?'sel':''}" onclick="pickScore(${i})">${i}</button>`;
   }
-
-  document.getElementById('qArea').innerHTML = `
+  document.getElementById('qArea').innerHTML=`
     <div class="q-card">
-      <div class="q-num">প্রশ্ন ${cur + 1} • ${q.topic}</div>
+      <div class="q-num">প্রশ্ন ${cur+1} • ${q.topic}</div>
       <div class="q-text">${q.q}</div>
       <div class="q-hint">${q.hint}</div>
       <div class="score-slider-wrap">
         <div class="score-track">${btnHtml}</div>
-        <div class="score-meaning">
-          <span>১ = ${q.meanings[0]}</span>
-          <span>১০ = ${q.meanings[1]}</span>
-        </div>
+        <div class="score-meaning"><span>১ = ${q.meanings[0]}</span><span>১০ = ${q.meanings[1]}</span></div>
       </div>
-      <div class="chosen-label" id="chosenLabel">
-        ${answers[cur] !== undefined ? `আপনি দিয়েছেন: <b>${answers[cur]}</b> — ${scoreLabels[answers[cur]]}` : 'নম্বর বেছে নিন'}
-      </div>
+      <div class="chosen-label" id="chosenLabel">${answers[cur]!==undefined?`আপনি দিয়েছেন: <b>${answers[cur]}</b> — ${scoreLabels[answers[cur]]}`:'নম্বর বেছে নিন'}</div>
     </div>
   `;
 }
 
-function pickScore(v) {
-  answers[cur] = v;
-  document.getElementById('nextBtn').disabled = false;
-  document.querySelectorAll('.score-btn').forEach((b, i) => {
-    b.classList.toggle('sel', i + 1 === v);
-  });
-  document.getElementById('chosenLabel').innerHTML =
-    `আপনি দিয়েছেন: <b>${v}</b> — ${scoreLabels[v]}`;
+function pickScore(v){
+  answers[cur]=v;
+  document.getElementById('nextBtn').disabled=false;
+  document.querySelectorAll('.score-btn').forEach((b,i)=>b.classList.toggle('sel',i+1===v));
+  document.getElementById('chosenLabel').innerHTML=`আপনি দিয়েছেন: <b>${v}</b> — ${scoreLabels[v]}`;
 }
 
-function nextQ() {
-  if (answers[cur] === undefined) return;
-  if (cur < questions.length - 1) { cur++; renderQ(); }
-  else showResult();
+function nextQ(){
+  if(answers[cur]===undefined) return;
+  if(cur<questions.length-1){ cur++; renderQ(); }
+  else submitQuiz();
 }
 
-function showResult() {
-  document.getElementById('quizSection').style.display = 'none';
-  document.getElementById('resultSection').style.display = 'block';
+function submitQuiz(){
+  // save to localStorage
+  const id = makeUserId(uName, uRole);
+  const subs = getSubmissions();
+  const idx = subs.findIndex(s=>s.id===id);
+  const entry = {
+    id, name:uName, role:uRole,
+    answers:[...answers],
+    total: answers.reduce((a,b)=>a+b,0),
+    date: new Date().toLocaleString('bn-BD', {timeZone:'Asia/Dhaka'})
+  };
+  if(idx>=0) subs[idx]=entry; else subs.push(entry);
+  saveSubmissions(subs);
+
+  document.getElementById('quizSection').style.display='none';
+  displayResult(answers, uName, uRole);
+}
+
+// ══════════════════════════════════
+//  RESULT DISPLAY
+// ══════════════════════════════════
+function displayResult(ans, name, role){
+  document.getElementById('resultSection').style.display='block';
   document.getElementById('resultSection').classList.add('show');
+  const total = ans.reduce((a,b)=>a+b,0);
+  const evaluatee = role==='স্বামী'?'স্ত্রীর':'স্বামীর';
+  document.getElementById('rName').textContent = name+' কর্তৃক '+evaluatee+' মূল্যায়ন';
 
-  const total = answers.reduce((a, b) => a + b, 0);
-  const evaluatee = uRole === 'স্বামী' ? 'স্ত্রীর' : 'স্বামীর';
-  document.getElementById('rName').textContent = uName + ' কর্তৃক ' + evaluatee + ' মূল্যায়ন';
+  let n=0;
+  const iv=setInterval(()=>{
+    n=Math.min(n+2,total);
+    document.getElementById('rNum').textContent=n;
+    document.getElementById('rArc').style.strokeDashoffset=389.6-(389.6*n/100);
+    if(n>=total) clearInterval(iv);
+  },20);
 
-  // animate
-  let n = 0;
-  const iv = setInterval(() => {
-    n = Math.min(n + 2, total);
-    document.getElementById('rNum').textContent = n;
-    const off = 389.6 - (389.6 * n / 100);
-    document.getElementById('rArc').style.strokeDashoffset = off;
-    if (n >= total) clearInterval(iv);
-  }, 20);
+  let pc,pt,pm;
+  if(total>=85)      {pc='v-excellent';pt='🌟 অসাধারণ সম্পর্ক!';pm='আপনার জীবনসঙ্গী সত্যিই অনন্য। এই সুন্দর দাম্পত্য জীবনকে আরও সুন্দর করে গড়ে তুলুন।';}
+  else if(total>=70) {pc='v-good';pt='👍 ভালো সম্পর্ক';pm='সম্পর্ক সামগ্রিকভাবে সুন্দর। কিছু দিকে আরও মনোযোগ দিলে আরও চমৎকার হবে।';}
+  else if(total>=50) {pc='v-average';pt='⚠️ উন্নতির সুযোগ আছে';pm='সম্পর্কে ভালো দিক আছে, তবে কিছু সমস্যাও আছে। খোলামেলা আলোচনা করুন।';}
+  else               {pc='v-poor';pt='🆘 মনোযোগ জরুরি';pm='সম্পর্কে উল্লেখযোগ্য চ্যালেঞ্জ আছে। পেশাদার কাউন্সেলরের পরামর্শ নেওয়া উচিত।';}
 
-  // verdict
-  let pc, pt, pm;
-  if (total >= 85)      { pc='v-excellent'; pt='🌟 অসাধারণ সম্পর্ক!'; pm='আপনার জীবনসঙ্গী সত্যিই অনন্য। এই সুন্দর দাম্পত্য জীবনকে আরও সুন্দর করে গড়ে তুলুন।'; }
-  else if (total >= 70) { pc='v-good';      pt='👍 ভালো সম্পর্ক';     pm='সম্পর্ক সামগ্রিকভাবে সুন্দর। কিছু দিকে আরও মনোযোগ দিলে আরও চমৎকার হবে।'; }
-  else if (total >= 50) { pc='v-average';   pt='⚠️ উন্নতির সুযোগ আছে'; pm='সম্পর্কে ভালো দিক আছে, তবে কিছু সমস্যাও আছে। খোলামেলা আলোচনা করুন।'; }
-  else                  { pc='v-poor';      pt='🆘 মনোযোগ জরুরি';     pm='সম্পর্কে উল্লেখযোগ্য চ্যালেঞ্জ আছে। পেশাদার কাউন্সেলরের পরামর্শ নেওয়া উচিত।'; }
+  document.getElementById('vPill').innerHTML=`<span class="verdict-pill ${pc}">${pt}</span>`;
+  document.getElementById('vMsg').textContent=pm;
 
-  document.getElementById('vPill').innerHTML = `<span class="verdict-pill ${pc}">${pt}</span>`;
-  document.getElementById('vMsg').textContent = pm;
-
-  // breakdown
-  let bqHtml = '';
-  questions.forEach((q, i) => {
-    const sc = answers[i] || 0;
-    bqHtml += `
-      <div class="bq-row">
-        <div class="bq-num">${i+1}</div>
-        <div class="bq-text">${q.topic}<br><span style="font-size:0.75rem;opacity:0.7">${q.q.substring(0,45)}...</span></div>
-        <div class="bq-score">${sc}/১০</div>
-      </div>
-    `;
+  let bqHtml='';
+  questions.forEach((q,i)=>{
+    const sc=ans[i]||0;
+    bqHtml+=`<div class="bq-row">
+      <div class="bq-num">${i+1}</div>
+      <div class="bq-text">${q.topic}<br><span style="font-size:0.75rem;opacity:0.7">${q.q.substring(0,45)}...</span></div>
+      <div class="bq-score">${sc}/১০</div>
+    </div>`;
   });
-  document.getElementById('bqList').innerHTML = bqHtml;
+  document.getElementById('bqList').innerHTML=bqHtml;
 
-  // weakest advice
-  const minIdx = answers.indexOf(Math.min(...answers));
-  const advices = [
-    'যোগাযোগ উন্নত করতে প্রতিদিন অন্তত ১৫ মিনিট শুধু একে অপরকে শুনুন। "আমি অনুভব করছি..." দিয়ে কথা শুরু করুন।',
-    'ভালোবাসা টিকিয়ে রাখতে ছোট ছোট মনোযোগের গুরুত্ব অনেক। হঠাৎ কোনো উপহার, প্রশংসা বা একসাথে সময় কাটান।',
-    'বিশ্বাস হারালে সম্পর্ক ভেঙে পড়ে। সব ক্ষেত্রে স্বচ্ছতা রাখুন এবং প্রতিশ্রুতি সবসময় পালন করুন।',
-    'সংসারের কাজে সমান অংশীদারিত্ব দাম্পত্যকে সুখী রাখে। কাজ ভাগ করে নিন এবং পরস্পরকে সহায়তা করুন।',
-    'পারিবারিক সম্পর্ক টিকিয়ে রাখতে একে অপরের পরিবারকে শ্রদ্ধা করুন। পরিবারের সাথে নিয়মিত সময় কাটান।',
-    'আর্থিক পরিকল্পনা একসাথে করুন। মাসিক বাজেট তৈরি করুন, সঞ্চয়ের লক্ষ্য নির্ধারণ করুন এবং ব্যয়ে স্বচ্ছতা রাখুন।',
-    'মানসিক সমর্থন দেওয়া মানে সমাধান দেওয়া নয়, শুধু পাশে থাকা। সঙ্গীর আবেগকে সম্মান করুন।',
-    'সম্মান সম্পর্কের ভিত্তি। কখনো সবার সামনে অপমান করবেন না এবং সিদ্ধান্তে সমান মত দিন।',
-    'একে অপরের স্বপ্নকে সমর্থন করুন। সঙ্গীর ক্যারিয়ার ও ব্যক্তিগত উন্নয়নে উৎসাহ দিন।',
-    'ধর্মীয় ও নৈতিক মূল্যবোধ একসাথে চর্চা করুন। একসাথে ইবাদত করলে সম্পর্ক আরও গভীর হয়।',
-  ];
-  document.getElementById('adviceText').textContent =
-    `সবচেয়ে কম নম্বর পেয়েছে "${questions[minIdx].topic}" (${answers[minIdx]}/১০) — ${advices[minIdx]}`;
+  const minIdx=ans.indexOf(Math.min(...ans));
+  document.getElementById('adviceText').textContent=`সবচেয়ে কম নম্বর পেয়েছে "${questions[minIdx].topic}" (${ans[minIdx]}/১০) — ${advices[minIdx]}`;
 }
 
-function restart() {
-  cur = 0; answers = [];
-  document.getElementById('resultSection').style.display = 'none';
-  document.getElementById('resultSection').classList.remove('show');
-  document.getElementById('introSection').style.display = 'block';
-  document.getElementById('userName').value = '';
-  document.getElementById('userRole').value = '';
+function printResult(){ window.print(); }
+
+// ══════════════════════════════════
+//  ADMIN
+// ══════════════════════════════════
+let currentFilter='all';
+function filterSubs(f, btn){
+  currentFilter=f;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderAdmin(f);
 }
 
-function printResult() { window.print(); }
+function renderAdmin(filter){
+  const subs=getSubmissions();
+  const filtered=filter==='all'?subs:subs.filter(s=>s.role===filter);
+
+  // stats
+  document.getElementById('statTotal').textContent=filtered.length;
+  if(filtered.length>0){
+    const avg=Math.round(filtered.reduce((a,s)=>a+s.total,0)/filtered.length);
+    const high=Math.max(...filtered.map(s=>s.total));
+    document.getElementById('statAvg').textContent=avg;
+    document.getElementById('statHigh').textContent=high;
+  } else {
+    document.getElementById('statAvg').textContent='০';
+    document.getElementById('statHigh').textContent='০';
+  }
+
+  // avg chart
+  if(filtered.length>0){
+    document.getElementById('avgCard').style.display='block';
+    let chartHtml='';
+    questions.forEach((q,i)=>{
+      const avg=(filtered.reduce((a,s)=>a+(s.answers[i]||0),0)/filtered.length).toFixed(1);
+      const pct=Math.round((avg/10)*100);
+      chartHtml+=`<div class="avg-row">
+        <div class="avg-label">${q.topic.replace(/^[^\s]+ /,'').substring(0,14)}</div>
+        <div class="avg-bar-bg"><div class="avg-bar" style="width:${pct}%"></div></div>
+        <div class="avg-val">${avg}</div>
+      </div>`;
+    });
+    document.getElementById('avgChart').innerHTML=chartHtml;
+  } else {
+    document.getElementById('avgCard').style.display='none';
+  }
+
+  // list
+  const listEl=document.getElementById('subsList');
+  if(filtered.length===0){
+    listEl.innerHTML='<div class="empty-state">এখনো কোনো মূল্যায়ন জমা হয়নি।<br>ব্যবহারকারীরা মূল্যায়ন করলে এখানে দেখা যাবে।</div>';
+    return;
+  }
+  let html='';
+  const sorted=[...filtered].sort((a,b)=>new Date(b.date)-new Date(a.date));
+  sorted.forEach(s=>{
+    const pct=Math.round(s.total/100*100);
+    let label='';
+    if(s.total>=85) label='🌟 অসাধারণ';
+    else if(s.total>=70) label='👍 ভালো';
+    else if(s.total>=50) label='⚠️ মাঝারি';
+    else label='🆘 দুর্বল';
+    html+=`<div class="sub-item" onclick="showDetail('${s.id}')">
+      <div class="sub-top">
+        <div class="sub-name">${s.name}</div>
+        <div class="sub-role">${s.role}</div>
+      </div>
+      <div class="sub-score-row">
+        <div class="sub-score-bar-bg"><div class="sub-score-bar" style="width:${pct}%"></div></div>
+        <div class="sub-score-num">${s.total}/১০০</div>
+      </div>
+      <div class="sub-date">${label} &nbsp;•&nbsp; ${s.date}</div>
+    </div>`;
+  });
+  listEl.innerHTML=html;
+}
+
+function showDetail(id){
+  const subs=getSubmissions();
+  const s=subs.find(x=>x.id===id);
+  if(!s) return;
+  document.getElementById('modalTitle').textContent=s.name+' ('+s.role+')';
+  document.getElementById('modalScore').textContent=s.total;
+
+  let pc,pt;
+  if(s.total>=85){pc='v-excellent';pt='🌟 অসাধারণ';}
+  else if(s.total>=70){pc='v-good';pt='👍 ভালো';}
+  else if(s.total>=50){pc='v-average';pt='⚠️ উন্নতির সুযোগ';}
+  else {pc='v-poor';pt='🆘 মনোযোগ জরুরি';}
+  document.getElementById('modalVerdict').innerHTML=`<span class="verdict-pill ${pc}">${pt}</span>`;
+
+  let bqHtml='';
+  questions.forEach((q,i)=>{
+    const sc=s.answers[i]||0;
+    bqHtml+=`<div class="bq-row">
+      <div class="bq-num">${i+1}</div>
+      <div class="bq-text">${q.topic}<br><span style="font-size:0.75rem;opacity:0.7">${q.q.substring(0,45)}...</span></div>
+      <div class="bq-score">${sc}/১০</div>
+    </div>`;
+  });
+  document.getElementById('modalBreakdown').innerHTML=`<div class="breakdown-card" style="margin-top:0;box-shadow:none;border:none;">${bqHtml}</div>`;
+  document.getElementById('detailModal').classList.add('open');
+}
+
+function closeModal(e){
+  if(e.target===document.getElementById('detailModal'))
+    document.getElementById('detailModal').classList.remove('open');
+}
+
+// ══════════════════════════════════
+//  RESTORE SESSION ON LOAD
+// ══════════════════════════════════
+window.addEventListener('load', ()=>{
+  const sess=getSession();
+  if(!sess) return;
+  if(sess.type==='admin'){
+    showAdminSection();
+  } else if(sess.type==='user'){
+    uName=sess.name; uRole=sess.role;
+    // check if they were mid-quiz (no, we don't restore mid-quiz, just show intro/result)
+    showUserSection();
+  }
+});
 </script>
 </body>
 </html>
