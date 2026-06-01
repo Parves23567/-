@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>জীবনসঙ্গী মূল্যায়ন – Dashing Family</title>
+<title>জীবনসঙ্গী মূল্যায়ন – Dashing Family Members</title>
+<link rel="icon" type="image/svg+xml" href="couple-evaluation-logo.svg">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700;900&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -46,15 +47,44 @@ body {
   background-image:
     radial-gradient(ellipse at 10% 0%, rgba(193,102,107,0.08) 0%, transparent 55%),
     radial-gradient(ellipse at 90% 100%, rgba(196,154,60,0.07) 0%, transparent 55%);
+  position: relative;
 }
+
+/* ── FLOWER WATERMARK LAYER ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.055;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='%23b84055'%3E%3Cellipse cx='60' cy='30' rx='10' ry='18' opacity='0.9'/%3E%3Cellipse cx='60' cy='30' rx='10' ry='18' transform='rotate(45 60 60)' opacity='0.9'/%3E%3Cellipse cx='60' cy='30' rx='10' ry='18' transform='rotate(90 60 60)' opacity='0.9'/%3E%3Cellipse cx='60' cy='30' rx='10' ry='18' transform='rotate(135 60 60)' opacity='0.9'/%3E%3Cellipse cx='60' cy='30' rx='10' ry='18' transform='rotate(180 60 60)' opacity='0.9'/%3E%3Cellipse cx='60' cy='30' rx='10' ry='18' transform='rotate(225 60 60)' opacity='0.9'/%3E%3Cellipse cx='60' cy='30' rx='10' ry='18' transform='rotate(270 60 60)' opacity='0.9'/%3E%3Cellipse cx='60' cy='30' rx='10' ry='18' transform='rotate(315 60 60)' opacity='0.9'/%3E%3Ccircle cx='60' cy='60' r='8' fill='%237b2d35'/%3E%3Ccircle cx='60' cy='60' r='4' fill='%23c49a3c'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cg fill='%23c49a3c'%3E%3Cellipse cx='40' cy='18' rx='7' ry='14' opacity='0.85'/%3E%3Cellipse cx='40' cy='18' rx='7' ry='14' transform='rotate(60 40 40)' opacity='0.85'/%3E%3Cellipse cx='40' cy='18' rx='7' ry='14' transform='rotate(120 40 40)' opacity='0.85'/%3E%3Cellipse cx='40' cy='18' rx='7' ry='14' transform='rotate(180 40 40)' opacity='0.85'/%3E%3Cellipse cx='40' cy='18' rx='7' ry='14' transform='rotate(240 40 40)' opacity='0.85'/%3E%3Cellipse cx='40' cy='18' rx='7' ry='14' transform='rotate(300 40 40)' opacity='0.85'/%3E%3Ccircle cx='40' cy='40' r='6' fill='%237b2d35'/%3E%3Ccircle cx='40' cy='40' r='3' fill='%23f5e07a'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23b84055' stroke-width='2'%3E%3Cpath d='M50,10 Q60,30 50,50 Q40,30 50,10Z' opacity='0.8'/%3E%3Cpath d='M50,10 Q60,30 50,50 Q40,30 50,10Z' transform='rotate(72 50 50)' opacity='0.8'/%3E%3Cpath d='M50,10 Q60,30 50,50 Q40,30 50,10Z' transform='rotate(144 50 50)' opacity='0.8'/%3E%3Cpath d='M50,10 Q60,30 50,50 Q40,30 50,10Z' transform='rotate(216 50 50)' opacity='0.8'/%3E%3Cpath d='M50,10 Q60,30 50,50 Q40,30 50,10Z' transform='rotate(288 50 50)' opacity='0.8'/%3E%3C/g%3E%3Ccircle cx='50' cy='50' r='5' fill='%23c49a3c'/%3E%3C/svg%3E");
+  background-size: 180px 180px, 120px 120px, 150px 150px;
+  background-position: 0 0, 90px 90px, 45px 45px;
+}
+
+/* make sure all content sits above watermark */
+body > * { position: relative; z-index: 1; }
 
 .ornament { text-align:center; font-size:1.1rem; color:var(--gold); letter-spacing:6px; opacity:0.7; }
 
 header {
-  padding: 36px 20px 24px;
+  padding: 28px 20px 24px;
   text-align: center;
   position: relative;
 }
+.site-logo {
+  display: flex; justify-content: center; align-items: center;
+  margin-bottom: 10px;
+}
+.site-logo svg {
+  filter: drop-shadow(0 4px 18px rgba(193,102,107,0.35));
+  transition: transform 0.4s ease;
+}
+.site-logo svg:hover { transform: scale(1.06) rotate(2deg); }
 .brand-tag { font-size:0.72rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
 .app-title {
   font-family: 'Noto Serif Bengali', serif;
@@ -390,7 +420,19 @@ header {
 .published-notice p { font-size:0.85rem; color:var(--deep); font-weight:600; }
 .published-notice small { display:block; font-size:0.75rem; color:var(--muted); font-weight:400; margin-top:2px; }
 
-/* ── REVIEW ── */
+/* ── CORNER FLOWER DECORATIONS ── */
+.flower-corner {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.12;
+}
+.flower-corner.tl { top: -20px; left: -20px; transform: rotate(0deg); }
+.flower-corner.tr { top: -20px; right: -20px; transform: rotate(90deg); }
+.flower-corner.bl { bottom: -20px; left: -20px; transform: rotate(270deg); }
+.flower-corner.br { bottom: -20px; right: -20px; transform: rotate(180deg); }
+
+
 #reviewSection { animation: slideUp 0.4s ease; }
 .review-header-card {
   background: var(--card); border-radius: 24px; padding: 28px 24px;
@@ -573,7 +615,111 @@ header {
 <body>
 
 <header>
-  <div class="brand-tag">✦ Dashing Family ✦</div>
+  <div class="site-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="90" height="90">
+      <defs>
+        <radialGradient id="hbg" cx="50%" cy="45%" r="65%"><stop offset="0%" stop-color="#6b1a26"/><stop offset="100%" stop-color="#1e0509"/></radialGradient>
+        <linearGradient id="hgold" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f5e07a"/><stop offset="50%" stop-color="#c9a040"/><stop offset="100%" stop-color="#f0d060"/></linearGradient>
+        <linearGradient id="hivory" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#fff8ee"/><stop offset="100%" stop-color="#e8d8c0"/></linearGradient>
+        <radialGradient id="hpetal" cx="40%" cy="35%" r="65%"><stop offset="0%" stop-color="#f5a0a8"/><stop offset="100%" stop-color="#b84055"/></radialGradient>
+        <linearGradient id="hheartG" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f06070"/><stop offset="100%" stop-color="#9a2535"/></linearGradient>
+        <filter id="hglow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="hsglow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="hshadow"><feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#0d0205" flood-opacity="0.7"/></filter>
+        <filter id="htextShadow"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/></filter>
+        <clipPath id="hmainClip"><circle cx="250" cy="250" r="220"/></clipPath>
+      </defs>
+      <circle cx="250" cy="250" r="240" fill="none" stroke="url(#hgold)" stroke-width="1.5" opacity="0.35"/>
+      <g stroke="url(#hgold)" opacity="0.45">
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(0 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(30 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(60 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(90 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(120 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(150 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(180 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(210 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(240 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(270 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(300 250 250)" stroke-width="1.5"/>
+        <line x1="250" y1="8" x2="250" y2="20" transform="rotate(330 250 250)" stroke-width="1.5"/>
+      </g>
+      <g fill="url(#hgold)" filter="url(#hglow)">
+        <polygon points="250,14 254,21 250,28 246,21" transform="rotate(0 250 250)"/>
+        <polygon points="250,14 254,21 250,28 246,21" transform="rotate(90 250 250)"/>
+        <polygon points="250,14 254,21 250,28 246,21" transform="rotate(180 250 250)"/>
+        <polygon points="250,14 254,21 250,28 246,21" transform="rotate(270 250 250)"/>
+      </g>
+      <circle cx="250" cy="250" r="222" fill="url(#hbg)" filter="url(#hshadow)"/>
+      <circle cx="250" cy="250" r="212" fill="none" stroke="url(#hgold)" stroke-width="1.2" opacity="0.3"/>
+      <!-- Wedding rings -->
+      <circle cx="222" cy="200" r="28" fill="none" stroke="url(#hgold)" stroke-width="7" filter="url(#hglow)" opacity="0.95"/>
+      <path d="M208,186 A16,16 0 0,1 230,182" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="222" cy="172" rx="5" ry="6" fill="url(#hgold)" opacity="0.9"/>
+      <circle cx="278" cy="200" r="28" fill="none" stroke="url(#hgold)" stroke-width="7" filter="url(#hglow)" opacity="0.95"/>
+      <path d="M264,186 A16,16 0 0,1 286,182" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="278" cy="172" rx="5" ry="6" fill="#d0a0e0" opacity="0.9"/>
+      <path d="M248,188 Q250,196 252,188" fill="none" stroke="url(#hbg)" stroke-width="8"/>
+      <path d="M244,192 Q250,210 256,192" fill="none" stroke="url(#hgold)" stroke-width="7" opacity="0.95"/>
+      <!-- Heart -->
+      <g transform="translate(250,242)" filter="url(#hsglow)">
+        <path d="M0,-14 C-5,-24 -22,-24 -22,-8 C-22,6 0,24 0,24 C0,24 22,6 22,-8 C22,-24 5,-24 0,-14 Z" fill="url(#hheartG)" opacity="0.97"/>
+        <path d="M-10,-16 C-13,-20 -18,-18 -16,-13" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="2.5" stroke-linecap="round"/>
+      </g>
+      <!-- Left rose -->
+      <g transform="translate(96,250)">
+        <path d="M0,50 Q-5,20 0,0" fill="none" stroke="#2d6a30" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M-3,30 Q-18,22 -14,12 Q-4,24 -3,30 Z" fill="#3a8040" opacity="0.8"/>
+        <path d="M-1,28 Q12,18 10,8 Q2,22 -1,28 Z" fill="#3a8040" opacity="0.8"/>
+        <ellipse cx="0" cy="-10" rx="10" ry="7" fill="#c05060" opacity="0.6" transform="rotate(-40 0 -10)"/>
+        <ellipse cx="0" cy="-10" rx="10" ry="7" fill="#c05060" opacity="0.6" transform="rotate(40 0 -10)"/>
+        <ellipse cx="0" cy="-10" rx="9" ry="6" fill="url(#hpetal)" opacity="0.85" transform="rotate(-20 0 -10)"/>
+        <ellipse cx="0" cy="-10" rx="9" ry="6" fill="url(#hpetal)" opacity="0.85" transform="rotate(20 0 -10)"/>
+        <ellipse cx="0" cy="-10" rx="9" ry="6" fill="url(#hpetal)" opacity="0.85" transform="rotate(-60 0 -10)"/>
+        <ellipse cx="0" cy="-10" rx="9" ry="6" fill="url(#hpetal)" opacity="0.85" transform="rotate(60 0 -10)"/>
+        <circle cx="0" cy="-10" r="6" fill="#8a2030"/>
+        <circle cx="0" cy="-10" r="3.5" fill="#b03040"/>
+      </g>
+      <!-- Right rose -->
+      <g transform="translate(404,250)">
+        <path d="M0,50 Q5,20 0,0" fill="none" stroke="#2d6a30" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M3,30 Q18,22 14,12 Q4,24 3,30 Z" fill="#3a8040" opacity="0.8"/>
+        <path d="M1,28 Q-12,18 -10,8 Q-2,22 1,28 Z" fill="#3a8040" opacity="0.8"/>
+        <ellipse cx="0" cy="-10" rx="10" ry="7" fill="#c05060" opacity="0.6" transform="rotate(-40 0 -10)"/>
+        <ellipse cx="0" cy="-10" rx="10" ry="7" fill="#c05060" opacity="0.6" transform="rotate(40 0 -10)"/>
+        <ellipse cx="0" cy="-10" rx="9" ry="6" fill="url(#hpetal)" opacity="0.85" transform="rotate(-20 0 -10)"/>
+        <ellipse cx="0" cy="-10" rx="9" ry="6" fill="url(#hpetal)" opacity="0.85" transform="rotate(20 0 -10)"/>
+        <ellipse cx="0" cy="-10" rx="9" ry="6" fill="url(#hpetal)" opacity="0.85" transform="rotate(-60 0 -10)"/>
+        <ellipse cx="0" cy="-10" rx="9" ry="6" fill="url(#hpetal)" opacity="0.85" transform="rotate(60 0 -10)"/>
+        <circle cx="0" cy="-10" r="6" fill="#8a2030"/>
+        <circle cx="0" cy="-10" r="3.5" fill="#b03040"/>
+      </g>
+      <!-- Dividers -->
+      <line x1="110" y1="295" x2="390" y2="295" stroke="url(#hgold)" stroke-width="0.7" opacity="0.4"/>
+      <line x1="130" y1="390" x2="370" y2="390" stroke="url(#hgold)" stroke-width="0.7" opacity="0.4"/>
+      <!-- Text -->
+      <text x="250" y="328" text-anchor="middle" font-family="Georgia,serif" font-size="42" font-weight="bold" fill="url(#hivory)" letter-spacing="8" filter="url(#htextShadow)">COUPLE</text>
+      <line x1="170" y1="338" x2="330" y2="338" stroke="url(#hgold)" stroke-width="0.8" opacity="0.5"/>
+      <text x="250" y="362" text-anchor="middle" font-family="Georgia,serif" font-size="26" fill="url(#hgold)" letter-spacing="6">EVALUATION</text>
+      <text x="250" y="383" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="url(#hgold)" letter-spacing="4" opacity="0.7">· · ✦ · ·</text>
+      <text x="250" y="408" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-style="italic" fill="rgba(240,220,180,0.7)" letter-spacing="1.5">By Dashing Family Members</text>
+      <!-- Crown -->
+      <rect x="205" y="68" width="90" height="5" rx="2.5" fill="url(#hgold)" opacity="0.7"/>
+      <polygon points="250,42 255,58 250,68 245,58" fill="url(#hgold)" opacity="0.9" filter="url(#hglow)"/>
+      <polygon points="228,52 231,62 228,68 225,62" fill="url(#hgold)" opacity="0.8"/>
+      <polygon points="272,52 275,62 272,68 269,62" fill="url(#hgold)" opacity="0.8"/>
+      <circle cx="250" cy="50" r="4" fill="#f0d060" filter="url(#hglow)" opacity="0.95"/>
+      <circle cx="228" cy="58" r="3" fill="#e8a0b0" filter="url(#hglow)" opacity="0.85"/>
+      <circle cx="272" cy="58" r="3" fill="#e8a0b0" filter="url(#hglow)" opacity="0.85"/>
+      <!-- Sparkles -->
+      <g fill="url(#hgold)" opacity="0.6">
+        <circle cx="130" cy="230" r="2"/><circle cx="370" cy="230" r="2"/>
+        <circle cx="145" cy="340" r="1.5"/><circle cx="355" cy="340" r="1.5"/>
+      </g>
+      <circle cx="250" cy="250" r="222" fill="none" stroke="#c1666b" stroke-width="4" opacity="0.1"/>
+    </svg>
+  </div>
+  <div class="brand-tag">✦ Dashing Family Members ✦</div>
   <h1 class="app-title">জীবনসঙ্গী মূল্যায়ন</h1>
   <p class="subtitle">দাম্পত্য জীবনের সামগ্রিক মূল্যায়ন পদ্ধতি</p>
 </header>
@@ -585,6 +731,81 @@ header {
 </div>
 
 <div class="wrap">
+
+<!-- ══ FLOWER CORNER DECORATIONS ══ -->
+<svg class="flower-corner tl" width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#b84055">
+    <ellipse cx="30" cy="30" rx="12" ry="28" transform="rotate(-45 30 30)"/>
+    <ellipse cx="60" cy="10" rx="10" ry="24" transform="rotate(-15 60 10)"/>
+    <ellipse cx="10" cy="60" rx="10" ry="24" transform="rotate(-75 10 60)"/>
+    <ellipse cx="80" cy="30" rx="8" ry="20" transform="rotate(15 80 30)"/>
+    <ellipse cx="30" cy="80" rx="8" ry="20" transform="rotate(-105 30 80)"/>
+  </g>
+  <g fill="#3a8040">
+    <path d="M5,160 Q40,100 100,80 Q60,120 5,160Z"/>
+    <path d="M5,130 Q50,90 110,60 Q65,105 5,130Z" opacity="0.7"/>
+    <path d="M30,170 Q60,120 120,100 Q80,135 30,170Z" opacity="0.6"/>
+  </g>
+  <g fill="#c49a3c" opacity="0.6">
+    <circle cx="90" cy="20" r="3"/><circle cx="110" cy="35" r="2"/>
+    <circle cx="20" cy="90" r="3"/><circle cx="35" cy="110" r="2"/>
+    <circle cx="70" cy="55" r="2.5"/>
+  </g>
+</svg>
+
+<svg class="flower-corner tr" width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#b84055">
+    <ellipse cx="30" cy="30" rx="12" ry="28" transform="rotate(-45 30 30)"/>
+    <ellipse cx="60" cy="10" rx="10" ry="24" transform="rotate(-15 60 10)"/>
+    <ellipse cx="10" cy="60" rx="10" ry="24" transform="rotate(-75 10 60)"/>
+    <ellipse cx="80" cy="30" rx="8" ry="20" transform="rotate(15 80 30)"/>
+    <ellipse cx="30" cy="80" rx="8" ry="20" transform="rotate(-105 30 80)"/>
+  </g>
+  <g fill="#3a8040">
+    <path d="M5,160 Q40,100 100,80 Q60,120 5,160Z"/>
+    <path d="M5,130 Q50,90 110,60 Q65,105 5,130Z" opacity="0.7"/>
+    <path d="M30,170 Q60,120 120,100 Q80,135 30,170Z" opacity="0.6"/>
+  </g>
+  <g fill="#c49a3c" opacity="0.6">
+    <circle cx="90" cy="20" r="3"/><circle cx="110" cy="35" r="2"/>
+    <circle cx="20" cy="90" r="3"/><circle cx="35" cy="110" r="2"/>
+  </g>
+</svg>
+
+<svg class="flower-corner bl" width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#c49a3c">
+    <ellipse cx="30" cy="30" rx="12" ry="28" transform="rotate(-45 30 30)"/>
+    <ellipse cx="60" cy="10" rx="10" ry="24" transform="rotate(-15 60 10)"/>
+    <ellipse cx="10" cy="60" rx="10" ry="24" transform="rotate(-75 10 60)"/>
+    <ellipse cx="80" cy="30" rx="8" ry="20" transform="rotate(15 80 30)"/>
+    <ellipse cx="30" cy="80" rx="8" ry="20" transform="rotate(-105 30 80)"/>
+  </g>
+  <g fill="#3a8040">
+    <path d="M5,160 Q40,100 100,80 Q60,120 5,160Z"/>
+    <path d="M5,130 Q50,90 110,60 Q65,105 5,130Z" opacity="0.7"/>
+  </g>
+  <g fill="#b84055" opacity="0.5">
+    <circle cx="90" cy="20" r="3"/><circle cx="20" cy="90" r="3"/>
+    <circle cx="70" cy="55" r="2.5"/>
+  </g>
+</svg>
+
+<svg class="flower-corner br" width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#c49a3c">
+    <ellipse cx="30" cy="30" rx="12" ry="28" transform="rotate(-45 30 30)"/>
+    <ellipse cx="60" cy="10" rx="10" ry="24" transform="rotate(-15 60 10)"/>
+    <ellipse cx="10" cy="60" rx="10" ry="24" transform="rotate(-75 10 60)"/>
+    <ellipse cx="80" cy="30" rx="8" ry="20" transform="rotate(15 80 30)"/>
+    <ellipse cx="30" cy="80" rx="8" ry="20" transform="rotate(-105 30 80)"/>
+  </g>
+  <g fill="#3a8040">
+    <path d="M5,160 Q40,100 100,80 Q60,120 5,160Z"/>
+    <path d="M30,170 Q60,120 120,100 Q80,135 30,170Z" opacity="0.6"/>
+  </g>
+  <g fill="#b84055" opacity="0.5">
+    <circle cx="90" cy="20" r="3"/><circle cx="20" cy="90" r="3"/>
+  </g>
+</svg>
 
 <!-- ══ LOGIN ══ -->
 <div id="loginSection">
